@@ -5,8 +5,8 @@ This quick guide help you to set up with Kotlin Jupyter Notebooks to develop tut
 # Environment set up
 
 Before building Docker container, please, set up the following environment variables:
-* `PRISM_SDK_USER` - github username for the Atala PRISM repositories (atala-dev for common PPP token)
-* `PRISM_SDK_PASSWORD` - Prism access token provided to Prism Pioneers
+* `ATALA_GITHUB_ACTOR` - github username for the Atala PRISM repositories (atala-dev for common PPP token)
+* `ATALA_GITHUB_TOKEN` - Prism access token provided to Prism Pioneers
 * `ATALA_PRISM_VERSION` - version of Atala PRISM to use (latest for now is `v1.3.3`) 
 
 ## Option 1:

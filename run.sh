@@ -4,11 +4,11 @@
 
 # Step 1 - Load Github Username and Token
 source .env
-
+export DOCKER_BUILDKIT=0
 # Step 2 - Build docker images
 docker build . \
-    --build-arg PRISM_SDK_USER=${PRISM_SDK_USER} \
-    --build-arg PRISM_SDK_PASSWORD=${PRISM_SDK_PASSWORD} \
+    --build-arg ATALA_GITHUB_TOKEN=${ATALA_GITHUB_TOKEN} \
+    --build-arg ATALA_GITHUB_ACTOR=${ATALA_GITHUB_ACTOR} \
     --build-arg ATALA_PRISM_VERSION=${ATALA_PRISM_VERSION} -t prism-playground
 
 # Step 3 - Build Gradle dependancies

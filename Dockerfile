@@ -4,28 +4,31 @@ USER root
 
 # Install linux dependencies
 RUN apt-get update && \
-    apt-get install -y openjdk-11-jdk ant git ca-certificates-java build-essential && \
+    apt-get install -y openjdk-11-jdk ant git ca-certificates-java build-essential python3 && \
     apt-get clean && update-ca-certificates -f
+
+RUN pip install -U pip setuptools wheel
+RUN pip install JPype1==1.3.0
 
 # Install kotlin kernel
 RUN conda install -c jetbrains kotlin-jupyter-kernel
 
-# Token to download SDK dependencies
-ARG PRISM_SDK_USER
-RUN test -n "${PRISM_SDK_USER}"
-ENV PRISM_SDK_USER ${PRISM_SDK_USER}
+#Token to download SDK dependencies
+ARG ATALA_GITHUB_TOKEN
+RUN test -n "${ATALA_GITHUB_TOKEN}"
+ENV ATALA_GITHUB_TOKEN ${ATALA_GITHUB_TOKEN}
 
-ARG PRISM_SDK_PASSWORD
-RUN test -n "${PRISM_SDK_PASSWORD}"
-ENV PRISM_SDK_PASSWORD ${PRISM_SDK_PASSWORD}
+ARG ATALA_GITHUB_ACTOR
+RUN test -n "${ATALA_GITHUB_ACTOR}"
+ENV ATALA_GITHUB_ACTOR ${ATALA_GITHUB_ACTOR}
 
 # Version of Atala PRISM to be downloaded
 ARG ATALA_PRISM_VERSION="v1.3.3"
 ENV ATALA_PRISM_VERSION ${ATALA_PRISM_VERSION}
 
-COPY . /kotlin-jupyter-example
-RUN cd /kotlin-jupyter-example && ./gradlew copyToJypiterClassPath --info
+COPY . /prism-playground
+RUN cd /prism-playground && ./gradlew copyToJypiterClassPath --info
 
 USER jovyan
 
-ENV ATALA_PRISM_SDK_JAVA_HOME "/home/atala_prism_sdk/*"
+ENV ATALA_PRISM_JARS "/home/atala_prism_sdk/"

@@ -45,9 +45,7 @@ dependencies {
     implementation("org.didcommx:peerdid:0.3.0")
 }
 
-// try using regular task.create because we don't need  a reference, also after that try using .register becuase we don't need eager creating
-
-val copyToJypiterClassPath by tasks.creating(Copy::class) {
+val copyToJypiterClassPath by tasks.registering(Copy::class) {
     from(configurations.runtimeClasspath.get().resolve())
     into(layout.buildDirectory.dir(dockerSdkJarsDir))
     dependsOn(tasks.build)
@@ -60,11 +58,5 @@ tasks.register("saveAtalaSdkDependencies") {
             sdkDependencies += "@file:DependsOn(\"$dockerSdkJarsDir/${it.name}\")\n"
         }
         File(projectDir, "atala_sdk_dependencies.txt").writeText(sdkDependencies)
-    }
-}
-
-tasks.register("printPath") {
-    configurations.runtimeClasspath.get().resolve().forEach { file ->
-        println(file.name)
     }
 }

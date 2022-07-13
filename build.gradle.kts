@@ -19,8 +19,8 @@ repositories {
     maven {
         url = uri("https://maven.pkg.github.com/input-output-hk/atala-prism-sdk")
         credentials {
-            username = System.getenv("PRISM_SDK_USER")
-            password = System.getenv("PRISM_SDK_PASSWORD")
+            username = System.getenv("ATALA_GITHUB_ACTOR")
+            password = System.getenv("ATALA_GITHUB_TOKEN")
         }
     }
 }
@@ -45,7 +45,7 @@ dependencies {
     implementation("org.didcommx:peerdid:0.3.0")
 }
 
-val copyToJypiterClassPath by tasks.creating(Copy::class) {
+val copyToJypiterClassPath by tasks.registering(Copy::class) {
     from(configurations.runtimeClasspath.get().resolve())
     into(layout.buildDirectory.dir(dockerSdkJarsDir))
     dependsOn(tasks.build)
@@ -55,7 +55,7 @@ tasks.register("saveAtalaSdkDependencies") {
     doLast {
         var sdkDependencies = ""
         configurations.runtimeClasspath.get().resolve().forEach {
-            sdkDependencies += "@file:DependsOn(\"${dockerSdkJarsDir}/${it.name}\")\n"
+            sdkDependencies += "@file:DependsOn(\"$dockerSdkJarsDir/${it.name}\")\n"
         }
         File(projectDir, "atala_sdk_dependencies.txt").writeText(sdkDependencies)
     }

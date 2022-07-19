@@ -4,8 +4,12 @@
 .idea
 /notebooks/.ipynb_checkpoints/
 /notebooks/*/.ipynb_checkpoints/
-.ipynb_checkpoints
 /atala_sdk_dependencies.txt
 /.env
 /notebooks/Playgrounds/TypeScript/node_modules/
 /notebooks/Playgrounds/TypeScript/package-lock.json
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+.DS_Store
+**/.DS_Store
+

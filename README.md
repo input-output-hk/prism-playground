@@ -7,7 +7,7 @@ This quick guide help you to set up with Kotlin Jupyter Notebooks to develop tut
 Before building Docker container, please, set up the following environment variables:
 * `ATALA_GITHUB_ACTOR` - github username for the Atala PRISM repositories (atala-dev for common PPP token)
 * `ATALA_GITHUB_TOKEN` - Prism access token provided to Prism Pioneers
-* `ATALA_PRISM_VERSION` - version of Atala PRISM to use (latest for now is `v1.3.3`) 
+* `ATALA_PRISM_VERSION` - version of Atala PRISM to use (latest for now is `v1.4.0`) 
 
 ## Option 1:
 
@@ -28,11 +28,11 @@ The docker containers should build and execute Jupyter Notebook. The link to acc
 ### Copy Atala Kotlin Dependancies into Jupyter Notebook
 In the project directory, you will find `atala_sdk_dependencies.txt` file with the following content:
 ```text
-@file:DependsOn("/home/atala_prism_sdk/prism-api-jvm-v1.3.3.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-credentials-jvm-v1.3.3.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-identity-jvm-v1.3.3.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-crypto-jvm-v1.3.3.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-protos-jvm-v1.3.3.jar")
+@file:DependsOn("/home/atala_prism_sdk/prism-api-jvm-v1.4.0.jar")
+@file:DependsOn("/home/atala_prism_sdk/prism-credentials-jvm-v1.4.0.jar")
+@file:DependsOn("/home/atala_prism_sdk/prism-identity-jvm-v1.4.0.jar")
+@file:DependsOn("/home/atala_prism_sdk/prism-crypto-jvm-v1.4.0.jar")
+@file:DependsOn("/home/atala_prism_sdk/prism-protos-jvm-v1.4.0.jar")
 ...
 ```
 
@@ -42,7 +42,7 @@ You have to copy this file in your notebook before executing any imports from At
 ```shell
 export PRISM_SDK_USER=atala-dev
 export PRISM_SDK_PASSWORD=<secret-atala-token-ask-devs-for-it>
-export ATALA_PRISM_VERSION=v1.3.3
+export ATALA_PRISM_VERSION=v1.4.0
 ```
 
 ### Build Docker container with Kotlin Jupyter kernel
@@ -69,11 +69,11 @@ to prepare a quick file to copy-paste dependencies in the Notebook. To create su
 ### Copy Atala Kotlin Dependancies into Jupyter Notebook
 In the project directory, you will find `atala_sdk_dependencies.txt` file with the following content:
 ```text
-@file:DependsOn("/home/atala_prism_sdk/prism-api-jvm-v1.3.3.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-credentials-jvm-v1.3.3.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-identity-jvm-v1.3.3.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-crypto-jvm-v1.3.3.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-protos-jvm-v1.3.3.jar")
+@file:DependsOn("/home/atala_prism_sdk/prism-api-jvm-v1.4.0.jar")
+@file:DependsOn("/home/atala_prism_sdk/prism-credentials-jvm-v1.4.0.jar")
+@file:DependsOn("/home/atala_prism_sdk/prism-identity-jvm-v1.4.0.jar")
+@file:DependsOn("/home/atala_prism_sdk/prism-crypto-jvm-v1.4.0.jar")
+@file:DependsOn("/home/atala_prism_sdk/prism-protos-jvm-v1.4.0.jar")
 ...
 ```
 

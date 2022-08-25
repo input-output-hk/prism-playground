@@ -13,17 +13,18 @@ RUN pip install JPype1==1.3.0
 # Install kotlin kernel
 RUN conda install -c jetbrains kotlin-jupyter-kernel
 
-#Token to download SDK dependencies
-ARG ATALA_GITHUB_TOKEN
-RUN test -n "${ATALA_GITHUB_TOKEN}"
-ENV ATALA_GITHUB_TOKEN ${ATALA_GITHUB_TOKEN}
-
+# Github User
 ARG ATALA_GITHUB_ACTOR
 RUN test -n "${ATALA_GITHUB_ACTOR}"
 ENV ATALA_GITHUB_ACTOR ${ATALA_GITHUB_ACTOR}
 
+# Token to download SDK dependencies
+ARG ATALA_GITHUB_TOKEN
+RUN test -n "${ATALA_GITHUB_TOKEN}"
+ENV ATALA_GITHUB_TOKEN ${ATALA_GITHUB_TOKEN}
+
 # Version of Atala PRISM to be downloaded
-ARG ATALA_PRISM_VERSION="v1.3.3"
+ARG ATALA_PRISM_VERSION="v1.4.0"
 ENV ATALA_PRISM_VERSION ${ATALA_PRISM_VERSION}
 
 COPY . /prism-playground

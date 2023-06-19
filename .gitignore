@@ -1,2 +1,12 @@
+# Project exclude paths
 .env
-/work/Playground/.ipynb_checkpoints/
+/.env
+.idea
+/notebooks/.ipynb_checkpoints/
+/notebooks/*/.ipynb_checkpoints/
+/notebooks/Playground/.ipynb_checkpoints/
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+.DS_Store
+**/.DS_Store
+

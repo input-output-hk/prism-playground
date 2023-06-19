@@ -11,7 +11,7 @@ To start the Prism Playground you can use the commands below to start and stop t
 ## Quick Start Guide
 ### 1. Run Prism Playground and Local Prism Agents
 ```bash
-cd <path>/prism_v2_playground
+cd <path>/prism-playground
 
 # Copy sample.env to .env
 cp sample.env .env
@@ -44,9 +44,9 @@ http://127.0.0.1:8888/
 This is the default location to access the Prism Agent Swagger API:
 > NOTE: You need to pass in the `apikey` header with the value `kxr9i@6XgKBUxe%O`
 
-[Issuer Agent Swagger Interface](http://localhost:8080/apidocs/)  
-[Holder Agent Swagger Interface](http://localhost:8090/apidocs/)  
-[Verifier Agent Swagger Interface](http://localhost:9000/apidocs/)  
+[Issuer Agent Swagger Interface](http://localhost:8080/docs/prism-agent/api/)  
+[Holder Agent Swagger Interface](http://localhost:8090/docs/prism-agent/api/)  
+[Verifier Agent Swagger Interface](http://localhost:9000/docs/prism-agent/api/)  
 
 ℹ️ If you are running Ubuntu (or Linux) operating system and have a firewall enabled ensure that you allow communication between the docker instances.
 Here is an example of adding a firewall rule with `ufw`:
@@ -56,7 +56,7 @@ sudo ufw allow to 172.17.0.1
 
 ### 3. Stop Prism Playground and Local Prism Agents
 ```bash
-cd <path>/prism_v2_playground
+cd <path>/prism-playground
 
 # Stopping the Jupyter Notebook Server (Prism Playground)
 docker-compose down

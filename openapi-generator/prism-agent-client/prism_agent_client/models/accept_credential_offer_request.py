@@ -8,9 +8,6 @@ T = TypeVar("T", bound="AcceptCredentialOfferRequest")
 @attr.s(auto_attribs=True)
 class AcceptCredentialOfferRequest:
     """
-    Example:
-        {'subjectId': 'did:prism:3bb0505d13fcb04d28a48234edb27b0d4e6d7e18a81e2c1abab58f3bbc21ce6f'}
-
     Attributes:
         subject_id (str): The short-form subject Prism DID to which the verifiable credential should be issued. Example:
             did:prism:3bb0505d13fcb04d28a48234edb27b0d4e6d7e18a81e2c1abab58f3bbc21ce6f.

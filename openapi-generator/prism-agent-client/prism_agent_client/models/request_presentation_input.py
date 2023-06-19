@@ -15,18 +15,11 @@ T = TypeVar("T", bound="RequestPresentationInput")
 @attr.s(auto_attribs=True)
 class RequestPresentationInput:
     """
-    Example:
-        {'proofs': [{'schemaId': 'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']},
-            {'schemaId': 'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']}], 'options':
-            {'domain': 'https://example-verifier.com', 'challenge': '11c91493-01b3-4c4d-ac36-b336bab5bddf'}, 'connectionId':
-            'bc528dc8-69f1-4c5a-a508-5f8019047900'}
-
     Attributes:
         connection_id (str): The unique identifier of an established connection between the verifier and the prover.
             Example: bc528dc8-69f1-4c5a-a508-5f8019047900.
         options (Union[Unset, Options]): The options to use when creating the proof presentation request (e.g., domain,
-            challenge). Example: {'domain': 'https://example-verifier.com', 'challenge':
-            '11c91493-01b3-4c4d-ac36-b336bab5bddf'}.
+            challenge).
         proofs (Union[Unset, List['ProofRequestAux']]): The type of proofs requested in the context of this proof
             presentation request (e.g., VC schema, trusted issuers, etc.)
     """

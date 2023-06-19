@@ -14,9 +14,9 @@ class Proof:
     """A digital signature over the Credential Schema for the sake of asserting authorship. A piece of Metadata.
 
     Example:
-        {'type': 'Ed25519Signature2018', 'created': datetime.datetime(2022, 3, 10, 12, 0, tzinfo=datetime.timezone.utc),
-            'verificationMethod': 'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff#key-1',
-            'proofPurpose': 'assertionMethod', 'proofValue': 'FiPfjknHikKmZ...', 'jws':
+        {'type': 'Ed25519Signature2018', 'created': '2022-03-10T12:00:00Z', 'verificationMethod':
+            'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff#key-1', 'proofPurpose':
+            'assertionMethod', 'proofValue': 'FiPfjknHikKmZ...', 'jws':
             'eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il0sImt0eSI6Ik...', 'domain': 'prims.atala.com'}
 
     Attributes:
@@ -24,7 +24,7 @@ class Proof:
             Ed25519Signature2018.
         created (datetime.datetime): The date and time at which the proof was created, in UTC format. This field is used
             to ensure that the proof was generated before or at the same time as the credential schema itself. Example:
-            2022-03-10 12:00:00+00:00.
+            2022-03-10T12:00Z.
         verification_method (str): The verification method used to generate the proof. This is usually a DID and key ID
             combination that can be used to look up the public key needed to verify the proof. Example:
             did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff#key-1.

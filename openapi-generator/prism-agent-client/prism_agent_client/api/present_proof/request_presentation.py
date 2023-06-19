@@ -76,12 +76,7 @@ def sync_detailed(
      Holder presents proof derived from the verifiable credential to verifier.
 
     Args:
-        json_body (RequestPresentationInput):  Example: {'proofs': [{'schemaId':
-            'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']},
-            {'schemaId': 'https://schema.org/Person', 'trustIssuers': ['trustIssuers',
-            'trustIssuers']}], 'options': {'domain': 'https://example-verifier.com', 'challenge':
-            '11c91493-01b3-4c4d-ac36-b336bab5bddf'}, 'connectionId':
-            'bc528dc8-69f1-4c5a-a508-5f8019047900'}.
+        json_body (RequestPresentationInput):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -114,12 +109,7 @@ def sync(
      Holder presents proof derived from the verifiable credential to verifier.
 
     Args:
-        json_body (RequestPresentationInput):  Example: {'proofs': [{'schemaId':
-            'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']},
-            {'schemaId': 'https://schema.org/Person', 'trustIssuers': ['trustIssuers',
-            'trustIssuers']}], 'options': {'domain': 'https://example-verifier.com', 'challenge':
-            '11c91493-01b3-4c4d-ac36-b336bab5bddf'}, 'connectionId':
-            'bc528dc8-69f1-4c5a-a508-5f8019047900'}.
+        json_body (RequestPresentationInput):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -145,12 +135,7 @@ async def asyncio_detailed(
      Holder presents proof derived from the verifiable credential to verifier.
 
     Args:
-        json_body (RequestPresentationInput):  Example: {'proofs': [{'schemaId':
-            'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']},
-            {'schemaId': 'https://schema.org/Person', 'trustIssuers': ['trustIssuers',
-            'trustIssuers']}], 'options': {'domain': 'https://example-verifier.com', 'challenge':
-            '11c91493-01b3-4c4d-ac36-b336bab5bddf'}, 'connectionId':
-            'bc528dc8-69f1-4c5a-a508-5f8019047900'}.
+        json_body (RequestPresentationInput):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -181,12 +166,7 @@ async def asyncio(
      Holder presents proof derived from the verifiable credential to verifier.
 
     Args:
-        json_body (RequestPresentationInput):  Example: {'proofs': [{'schemaId':
-            'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']},
-            {'schemaId': 'https://schema.org/Person', 'trustIssuers': ['trustIssuers',
-            'trustIssuers']}], 'options': {'domain': 'https://example-verifier.com', 'challenge':
-            '11c91493-01b3-4c4d-ac36-b336bab5bddf'}, 'connectionId':
-            'bc528dc8-69f1-4c5a-a508-5f8019047900'}.
+        json_body (RequestPresentationInput):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

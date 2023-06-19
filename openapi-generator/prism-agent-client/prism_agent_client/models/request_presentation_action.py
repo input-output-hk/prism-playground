@@ -11,9 +11,6 @@ T = TypeVar("T", bound="RequestPresentationAction")
 @attr.s(auto_attribs=True)
 class RequestPresentationAction:
     """
-    Example:
-        {'action': 'request-accept', 'proofId': ['proofId', 'proofId']}
-
     Attributes:
         action (RequestPresentationActionAction): The action to perform on the proof presentation record. Example:
             request-accept.

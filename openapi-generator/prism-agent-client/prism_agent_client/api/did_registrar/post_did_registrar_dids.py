@@ -81,11 +81,7 @@ def sync_detailed(
     managed by Prism Agent. The DID can later be published to the VDR using publications endpoint.
 
     Args:
-        json_body (CreateManagedDidRequest):  Example: {'documentTemplate': {'publicKeys':
-            [{'purpose': 'authentication', 'id': 'key-1'}, {'purpose': 'authentication', 'id':
-            'key-1'}], 'services': [{'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint',
-            'serviceEndpoint'], 'type': 'LinkedDomains'}, {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}]}}.
+        json_body (CreateManagedDidRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -119,11 +115,7 @@ def sync(
     managed by Prism Agent. The DID can later be published to the VDR using publications endpoint.
 
     Args:
-        json_body (CreateManagedDidRequest):  Example: {'documentTemplate': {'publicKeys':
-            [{'purpose': 'authentication', 'id': 'key-1'}, {'purpose': 'authentication', 'id':
-            'key-1'}], 'services': [{'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint',
-            'serviceEndpoint'], 'type': 'LinkedDomains'}, {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}]}}.
+        json_body (CreateManagedDidRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -150,11 +142,7 @@ async def asyncio_detailed(
     managed by Prism Agent. The DID can later be published to the VDR using publications endpoint.
 
     Args:
-        json_body (CreateManagedDidRequest):  Example: {'documentTemplate': {'publicKeys':
-            [{'purpose': 'authentication', 'id': 'key-1'}, {'purpose': 'authentication', 'id':
-            'key-1'}], 'services': [{'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint',
-            'serviceEndpoint'], 'type': 'LinkedDomains'}, {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}]}}.
+        json_body (CreateManagedDidRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -186,11 +174,7 @@ async def asyncio(
     managed by Prism Agent. The DID can later be published to the VDR using publications endpoint.
 
     Args:
-        json_body (CreateManagedDidRequest):  Example: {'documentTemplate': {'publicKeys':
-            [{'purpose': 'authentication', 'id': 'key-1'}, {'purpose': 'authentication', 'id':
-            'key-1'}], 'services': [{'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint',
-            'serviceEndpoint'], 'type': 'LinkedDomains'}, {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}]}}.
+        json_body (CreateManagedDidRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

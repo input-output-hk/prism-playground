@@ -10,9 +10,6 @@ T = TypeVar("T", bound="VerificationPolicyConstraint")
 @attr.s(auto_attribs=True)
 class VerificationPolicyConstraint:
     """
-    Example:
-        {'trustedIssuers': ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'}
-
     Attributes:
         schema_id (str):
         trusted_issuers (Union[Unset, List[str]]):

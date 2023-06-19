@@ -10,7 +10,6 @@ from .connection_state import ConnectionState
 from .connections_page import ConnectionsPage
 from .create_connection_request import CreateConnectionRequest
 from .create_issue_credential_record_request import CreateIssueCredentialRecordRequest
-from .create_issue_credential_record_request_claims import CreateIssueCredentialRecordRequestClaims
 from .create_managed_did_request import CreateManagedDidRequest
 from .create_managed_did_request_document_template import CreateManagedDidRequestDocumentTemplate
 from .create_managed_did_response import CreateManagedDIDResponse
@@ -26,12 +25,10 @@ from .did_resolution_result import DIDResolutionResult
 from .error_response import ErrorResponse
 from .health_info import HealthInfo
 from .issue_credential_record import IssueCredentialRecord
-from .issue_credential_record_claims import IssueCredentialRecordClaims
 from .issue_credential_record_page import IssueCredentialRecordPage
 from .managed_did import ManagedDID
 from .managed_did_key_template import ManagedDIDKeyTemplate
 from .managed_did_page import ManagedDIDPage
-from .map_string import MapString
 from .options import Options
 from .presentation_status import PresentationStatus
 from .presentation_status_page import PresentationStatusPage
@@ -66,7 +63,6 @@ __all__ = (
     "ConnectionState",
     "CreateConnectionRequest",
     "CreateIssueCredentialRecordRequest",
-    "CreateIssueCredentialRecordRequestClaims",
     "CreateManagedDidRequest",
     "CreateManagedDidRequestDocumentTemplate",
     "CreateManagedDIDResponse",
@@ -82,12 +78,10 @@ __all__ = (
     "ErrorResponse",
     "HealthInfo",
     "IssueCredentialRecord",
-    "IssueCredentialRecordClaims",
     "IssueCredentialRecordPage",
     "ManagedDID",
     "ManagedDIDKeyTemplate",
     "ManagedDIDPage",
-    "MapString",
     "Options",
     "PresentationStatus",
     "PresentationStatusPage",

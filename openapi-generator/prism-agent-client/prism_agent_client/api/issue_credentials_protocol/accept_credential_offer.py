@@ -83,8 +83,7 @@ def sync_detailed(
 
     Args:
         record_id (str):
-        json_body (AcceptCredentialOfferRequest):  Example: {'subjectId':
-            'did:prism:3bb0505d13fcb04d28a48234edb27b0d4e6d7e18a81e2c1abab58f3bbc21ce6f'}.
+        json_body (AcceptCredentialOfferRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -120,8 +119,7 @@ def sync(
 
     Args:
         record_id (str):
-        json_body (AcceptCredentialOfferRequest):  Example: {'subjectId':
-            'did:prism:3bb0505d13fcb04d28a48234edb27b0d4e6d7e18a81e2c1abab58f3bbc21ce6f'}.
+        json_body (AcceptCredentialOfferRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -150,8 +148,7 @@ async def asyncio_detailed(
 
     Args:
         record_id (str):
-        json_body (AcceptCredentialOfferRequest):  Example: {'subjectId':
-            'did:prism:3bb0505d13fcb04d28a48234edb27b0d4e6d7e18a81e2c1abab58f3bbc21ce6f'}.
+        json_body (AcceptCredentialOfferRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -185,8 +182,7 @@ async def asyncio(
 
     Args:
         record_id (str):
-        json_body (AcceptCredentialOfferRequest):  Example: {'subjectId':
-            'did:prism:3bb0505d13fcb04d28a48234edb27b0d4e6d7e18a81e2c1abab58f3bbc21ce6f'}.
+        json_body (AcceptCredentialOfferRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

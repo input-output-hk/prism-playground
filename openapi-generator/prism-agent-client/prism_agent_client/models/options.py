@@ -9,9 +9,6 @@ T = TypeVar("T", bound="Options")
 class Options:
     """The options to use when creating the proof presentation request (e.g., domain, challenge).
 
-    Example:
-        {'domain': 'https://example-verifier.com', 'challenge': '11c91493-01b3-4c4d-ac36-b336bab5bddf'}
-
     Attributes:
         challenge (str): The challenge should be a randomly generated string. Example:
             11c91493-01b3-4c4d-ac36-b336bab5bddf.

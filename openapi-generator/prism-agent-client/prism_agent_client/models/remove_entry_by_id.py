@@ -8,9 +8,6 @@ T = TypeVar("T", bound="RemoveEntryById")
 @attr.s(auto_attribs=True)
 class RemoveEntryById:
     """
-    Example:
-        {'id': 'id'}
-
     Attributes:
         id (str):
     """

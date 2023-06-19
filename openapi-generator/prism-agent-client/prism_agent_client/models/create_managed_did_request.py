@@ -12,17 +12,8 @@ T = TypeVar("T", bound="CreateManagedDidRequest")
 @attr.s(auto_attribs=True)
 class CreateManagedDidRequest:
     """
-    Example:
-        {'documentTemplate': {'publicKeys': [{'purpose': 'authentication', 'id': 'key-1'}, {'purpose': 'authentication',
-            'id': 'key-1'}], 'services': [{'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'],
-            'type': 'LinkedDomains'}, {'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}]}}
-
     Attributes:
-        document_template (CreateManagedDidRequestDocumentTemplate):  Example: {'publicKeys': [{'purpose':
-            'authentication', 'id': 'key-1'}, {'purpose': 'authentication', 'id': 'key-1'}], 'services': [{'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, {'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}]}.
+        document_template (CreateManagedDidRequestDocumentTemplate):
     """
 
     document_template: "CreateManagedDidRequestDocumentTemplate"

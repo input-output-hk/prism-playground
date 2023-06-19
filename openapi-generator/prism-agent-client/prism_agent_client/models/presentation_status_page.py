@@ -14,18 +14,6 @@ T = TypeVar("T", bound="PresentationStatusPage")
 @attr.s(auto_attribs=True)
 class PresentationStatusPage:
     """
-    Example:
-        {'pageOf': '1', 'next': '', 'previous': '', 'contents': [{'presentationId':
-            '3c6d9fa5-d277-431e-a6cb-d3956e47e610', 'data': ['data', 'data'], 'proofs': [{'schemaId':
-            'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']}, {'schemaId':
-            'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']}], 'connectionId':
-            'bc528dc8-69f1-4c5a-a508-5f8019047900', 'status': 'RequestPending'}, {'presentationId':
-            '3c6d9fa5-d277-431e-a6cb-d3956e47e610', 'data': ['data', 'data'], 'proofs': [{'schemaId':
-            'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']}, {'schemaId':
-            'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']}], 'connectionId':
-            'bc528dc8-69f1-4c5a-a508-5f8019047900', 'status': 'RequestPending'}], 'kind': 'Collection', 'self': '/present-
-            proof/presentations'}
-
     Attributes:
         self_ (str): The reference to the presentation collection itself. Example: /present-proof/presentations.
         kind (str): The type of object returned. In this case a `Collection`. Example: Collection.

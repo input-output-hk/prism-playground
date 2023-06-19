@@ -9,15 +9,6 @@ T = TypeVar("T", bound="ConnectionInvitation")
 class ConnectionInvitation:
     """The invitation for this connection
 
-    Example:
-        {'invitationUrl': 'https://my.domain.com/path?_oob=eyJAaWQiOiIzZmE4NWY2NC01NzE3LTQ1NjItYjNmYy0yYzk2M2Y2NmFmYTYiL
-            CJAdHlwZSI6Imh0dHBzOi8vZGlkY29tbS5vcmcvbXktZmFtaWx5LzEuMC9teS1tZXNzYWdlLXR5cGUiLCJkaWQiOiJXZ1d4cXp0ck5vb0c5MlJYd
-            nhTVFd2IiwiaW1hZ2VVcmwiOiJodHRwOi8vMTkyLjE2OC41Ni4xMDEvaW1nL2xvZ28uanBnIiwibGFiZWwiOiJCb2IiLCJyZWNpcGllbnRLZXlzI
-            jpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQWpacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInJvdXRpbmdLZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM
-            3VWQWpacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInNlcnZpY2VFbmRwb2ludCI6Imh0dHA6Ly8xOTIuMTY4LjU2LjEwMTo4MDIwIn0=',
-            'from': 'did:peer:1234457', 'id': '0527aea1-d131-3948-a34d-03af39aba8b4', 'type': 'https://didcomm.org/out-of-
-            band/2.0/invitation'}
-
     Attributes:
         id (str): The unique identifier of the invitation. It should be used as parent thread ID (pthid) for the
             Connection Request message that follows. Example: 0527aea1-d131-3948-a34d-03af39aba8b4.

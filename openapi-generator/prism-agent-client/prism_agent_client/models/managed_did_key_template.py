@@ -11,9 +11,6 @@ T = TypeVar("T", bound="ManagedDIDKeyTemplate")
 class ManagedDIDKeyTemplate:
     """key-pair template to add to DID document.
 
-    Example:
-        {'purpose': 'authentication', 'id': 'key-1'}
-
     Attributes:
         id (str): Identifier of a verification material in the DID Document Example: key-1.
         purpose (Purpose): Purpose of the verification material in the DID Document Example: authentication.

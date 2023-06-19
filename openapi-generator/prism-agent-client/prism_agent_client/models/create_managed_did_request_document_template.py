@@ -15,12 +15,6 @@ T = TypeVar("T", bound="CreateManagedDidRequestDocumentTemplate")
 @attr.s(auto_attribs=True)
 class CreateManagedDidRequestDocumentTemplate:
     """
-    Example:
-        {'publicKeys': [{'purpose': 'authentication', 'id': 'key-1'}, {'purpose': 'authentication', 'id': 'key-1'}],
-            'services': [{'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}, {'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}]}
-
     Attributes:
         public_keys (Union[Unset, List['ManagedDIDKeyTemplate']]):
         services (Union[Unset, List['Service']]):

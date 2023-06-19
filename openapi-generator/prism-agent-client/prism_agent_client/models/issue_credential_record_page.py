@@ -14,22 +14,6 @@ T = TypeVar("T", bound="IssueCredentialRecordPage")
 @attr.s(auto_attribs=True)
 class IssueCredentialRecordPage:
     """
-    Example:
-        {'pageOf': '/prism-agent/schema-registry/schemas', 'next': '/prism-agent/schema-
-            registry/schemas?skip=20&limit=10', 'previous': '/prism-agent/schema-registry/schemas?skip=0&limit=10',
-            'contents': [{'validityPeriod': 3600.0, 'recordId': '80d612dc-0ded-4ac9-90b4-1b8eabb04545', 'createdAt':
-            datetime.datetime(2023, 6, 13, 17, 43, 4, 562064, tzinfo=datetime.timezone.utc), 'issuingDID':
-            'did:prism:issuerofverifiablecredentials', 'role': 'Issuer', 'jwtCredential': 'jwtCredential', 'claims':
-            '(firstname,Alice)', 'automaticIssuance': True, 'subjectId': 'did:prism:subjectofverifiablecredentials',
-            'updatedAt': datetime.datetime(2000, 1, 23, 4, 56, 7, tzinfo=datetime.timezone.utc), 'protocolState':
-            'OfferPending'}, {'validityPeriod': 3600.0, 'recordId': '80d612dc-0ded-4ac9-90b4-1b8eabb04545', 'createdAt':
-            datetime.datetime(2023, 6, 13, 17, 43, 4, 562064, tzinfo=datetime.timezone.utc), 'issuingDID':
-            'did:prism:issuerofverifiablecredentials', 'role': 'Issuer', 'jwtCredential': 'jwtCredential', 'claims':
-            '(firstname,Alice)', 'automaticIssuance': True, 'subjectId': 'did:prism:subjectofverifiablecredentials',
-            'updatedAt': datetime.datetime(2000, 1, 23, 4, 56, 7, tzinfo=datetime.timezone.utc), 'protocolState':
-            'OfferPending'}], 'kind': '/prism-agent/schema-registry/schemas?skip=10&limit=10', 'self': '/prism-agent/schema-
-            registry/schemas?skip=10&limit=10'}
-
     Attributes:
         self_ (str): A string field containing the URL of the current API endpoint Example: /prism-agent/schema-
             registry/schemas?skip=10&limit=10.

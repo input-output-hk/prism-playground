@@ -76,9 +76,7 @@ def sync_detailed(
      Creates a new credential offer in the database
 
     Args:
-        json_body (CreateIssueCredentialRecordRequest):  Example: {'validityPeriod': 3600.0,
-            'issuingDID': 'did:prism:issuerofverifiablecredentials', 'claims': '(firstname,Alice)',
-            'connectionId': 'connectionId', 'automaticIssuance': True}.
+        json_body (CreateIssueCredentialRecordRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -111,9 +109,7 @@ def sync(
      Creates a new credential offer in the database
 
     Args:
-        json_body (CreateIssueCredentialRecordRequest):  Example: {'validityPeriod': 3600.0,
-            'issuingDID': 'did:prism:issuerofverifiablecredentials', 'claims': '(firstname,Alice)',
-            'connectionId': 'connectionId', 'automaticIssuance': True}.
+        json_body (CreateIssueCredentialRecordRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,9 +135,7 @@ async def asyncio_detailed(
      Creates a new credential offer in the database
 
     Args:
-        json_body (CreateIssueCredentialRecordRequest):  Example: {'validityPeriod': 3600.0,
-            'issuingDID': 'did:prism:issuerofverifiablecredentials', 'claims': '(firstname,Alice)',
-            'connectionId': 'connectionId', 'automaticIssuance': True}.
+        json_body (CreateIssueCredentialRecordRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -172,9 +166,7 @@ async def asyncio(
      Creates a new credential offer in the database
 
     Args:
-        json_body (CreateIssueCredentialRecordRequest):  Example: {'validityPeriod': 3600.0,
-            'issuingDID': 'did:prism:issuerofverifiablecredentials', 'claims': '(firstname,Alice)',
-            'connectionId': 'connectionId', 'automaticIssuance': True}.
+        json_body (CreateIssueCredentialRecordRequest):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

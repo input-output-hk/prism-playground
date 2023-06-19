@@ -14,32 +14,6 @@ T = TypeVar("T", bound="ConnectionsPage")
 @attr.s(auto_attribs=True)
 class ConnectionsPage:
     """
-    Example:
-        {'pageOf': '', 'next': '/prism-agent/connections?offset=20&limit=10', 'previous': '/prism-
-            agent/connections?offset=0&limit=10', 'contents': [{'createdAt': datetime.datetime(2022, 3, 10, 12, 0,
-            tzinfo=datetime.timezone.utc), 'theirDid': 'did:peer:67890', 'role': 'Inviter', 'invitation': {'invitationUrl':
-            'https://my.domain.com/path?_oob=eyJAaWQiOiIzZmE4NWY2NC01NzE3LTQ1NjItYjNmYy0yYzk2M2Y2NmFmYTYiLCJAdHlwZSI6Imh0dHB
-            zOi8vZGlkY29tbS5vcmcvbXktZmFtaWx5LzEuMC9teS1tZXNzYWdlLXR5cGUiLCJkaWQiOiJXZ1d4cXp0ck5vb0c5MlJYdnhTVFd2IiwiaW1hZ2V
-            VcmwiOiJodHRwOi8vMTkyLjE2OC41Ni4xMDEvaW1nL2xvZ28uanBnIiwibGFiZWwiOiJCb2IiLCJyZWNpcGllbnRLZXlzIjpbIkgzQzJBVnZMTXY
-            2Z21NTmFtM3VWQWpacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInJvdXRpbmdLZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQWpacGZrY0pDd0R
-            3blpuNnozd1htcVBWIl0sInNlcnZpY2VFbmRwb2ludCI6Imh0dHA6Ly8xOTIuMTY4LjU2LjEwMTo4MDIwIn0=', 'from':
-            'did:peer:1234457', 'id': '0527aea1-d131-3948-a34d-03af39aba8b4', 'type': 'https://didcomm.org/out-of-
-            band/2.0/invitation'}, 'kind': 'Connection', 'connectionId': '0527aea1-d131-3948-a34d-03af39aba8b4', 'self':
-            'https://atala-prism-products.io/connections/ABCD-1234', 'label': 'Peter', 'myDid': 'did:peer:12345', 'state':
-            'InvitationGenerated', 'updatedAt': datetime.datetime(2022, 3, 10, 12, 0, tzinfo=datetime.timezone.utc)},
-            {'createdAt': datetime.datetime(2022, 3, 10, 12, 0, tzinfo=datetime.timezone.utc), 'theirDid': 'did:peer:67890',
-            'role': 'Inviter', 'invitation': {'invitationUrl': 'https://my.domain.com/path?_oob=eyJAaWQiOiIzZmE4NWY2NC01NzE3
-            LTQ1NjItYjNmYy0yYzk2M2Y2NmFmYTYiLCJAdHlwZSI6Imh0dHBzOi8vZGlkY29tbS5vcmcvbXktZmFtaWx5LzEuMC9teS1tZXNzYWdlLXR5cGUi
-            LCJkaWQiOiJXZ1d4cXp0ck5vb0c5MlJYdnhTVFd2IiwiaW1hZ2VVcmwiOiJodHRwOi8vMTkyLjE2OC41Ni4xMDEvaW1nL2xvZ28uanBnIiwibGFi
-            ZWwiOiJCb2IiLCJyZWNpcGllbnRLZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQWpacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInJvdXRpbmdL
-            ZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQWpacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInNlcnZpY2VFbmRwb2ludCI6Imh0dHA6Ly8xOTIu
-            MTY4LjU2LjEwMTo4MDIwIn0=', 'from': 'did:peer:1234457', 'id': '0527aea1-d131-3948-a34d-03af39aba8b4', 'type':
-            'https://didcomm.org/out-of-band/2.0/invitation'}, 'kind': 'Connection', 'connectionId':
-            '0527aea1-d131-3948-a34d-03af39aba8b4', 'self': 'https://atala-prism-products.io/connections/ABCD-1234',
-            'label': 'Peter', 'myDid': 'did:peer:12345', 'state': 'InvitationGenerated', 'updatedAt':
-            datetime.datetime(2022, 3, 10, 12, 0, tzinfo=datetime.timezone.utc)}], 'kind': 'ConnectionsPage', 'self':
-            '/prism-agent/connections?offset=10&limit=10'}
-
     Attributes:
         kind (str):  Example: ConnectionsPage.
         self_ (str):  Example: /prism-agent/connections?offset=10&limit=10.

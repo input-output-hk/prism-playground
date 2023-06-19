@@ -8,9 +8,6 @@ T = TypeVar("T", bound="HealthInfo")
 @attr.s(auto_attribs=True)
 class HealthInfo:
     """
-    Example:
-        {'version': '1.1.0'}
-
     Attributes:
         version (str): The semantic version number of the running service Example: 1.1.0.
     """

@@ -113,6 +113,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Invalid request parameters
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Resource could not be found
         "500":
           content:
             application/json:
@@ -169,6 +175,12 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
           description: Invalid request parameters
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+          description: Resource could not be found
         "500":
           content:
             application/json:
@@ -344,15 +356,6 @@ paths:
           format: uuid
           type: string
         style: simple
-      - description: Nonce of the previous VerificationPolicy
-        explode: true
-        in: query
-        name: nonce
-        required: true
-        schema:
-          format: int32
-          type: integer
-        style: form
       responses:
         "200":
           description: Verification policy deleted successfully
@@ -1692,6 +1695,7 @@ components:
       example:
         validityPeriod: 3600.0
         issuingDID: did:prism:issuerofverifiablecredentials
+        schemaId: https://agent-host.com/prism-agent/schema-registry/schemas/d9569cec-c81e-4779-aa86-0d5994d82676
         claims: "(firstname,Alice)"
         connectionId: connectionId
         automaticIssuance: true
@@ -1702,13 +1706,15 @@ components:
           example: 3600.0
           format: double
           type: number
+        schemaId:
+          description: The unique identifier of the schema used for this credential
+            offer.
+          example: https://agent-host.com/prism-agent/schema-registry/schemas/d9569cec-c81e-4779-aa86-0d5994d82676
+          type: string
         claims:
-          additionalProperties:
-            type: string
           description: The claims that will be associated with the issued verifiable
             credential.
           example: "(firstname,Alice)"
-          type: object
         automaticIssuance:
           description: "Specifies whether or not the credential should be automatically\
             \ generated and issued when receiving the `CredentialRequest` from the\
@@ -1797,34 +1803,32 @@ components:
     CredentialSchemaInput:
       example:
         schema:
-          $id: driving-license-1.0
+          $id: https://example.com/driving-license-1.0
           $schema: https://json-schema.org/draft/2020-12/schema
           description: Driving License
           type: object
           properties:
-            credentialSubject:
-              type: object
-              properties:
-                emailAddress:
-                  type: string
-                  format: email
-                givenName:
-                  type: string
-                familyName:
-                  type: string
-                dateOfIssuance:
-                  type: datetime
-                drivingLicenseID:
-                  type: string
-                drivingClass:
-                  type: integer
-                required:
-                - emailAddress
-                - familyName
-                - dateOfIssuance
-                - drivingLicenseID
-                - drivingClass
-                additionalProperties: true
+            emailAddress:
+              type: string
+              format: email
+            givenName:
+              type: string
+            familyName:
+              type: string
+            dateOfIssuance:
+              type: string
+              format: date-time
+            drivingLicenseID:
+              type: string
+            drivingClass:
+              type: integer
+          required:
+          - emailAddress
+          - familyName
+          - dateOfIssuance
+          - drivingLicenseID
+          - drivingClass
+          additionalProperties: false
         author: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff
         name: DrivingLicense
         description: Simple credential schema for the driving licence verifiable credential.
@@ -1863,34 +1867,32 @@ components:
           description: Valid JSON Schema where the Credential Schema data fields are
             defined. A piece of Metadata
           example:
-            $id: driving-license-1.0
+            $id: https://example.com/driving-license-1.0
             $schema: https://json-schema.org/draft/2020-12/schema
             description: Driving License
             type: object
             properties:
-              credentialSubject:
-                type: object
-                properties:
-                  emailAddress:
-                    type: string
-                    format: email
-                  givenName:
-                    type: string
-                  familyName:
-                    type: string
-                  dateOfIssuance:
-                    type: datetime
-                  drivingLicenseID:
-                    type: string
-                  drivingClass:
-                    type: integer
-                  required:
-                  - emailAddress
-                  - familyName
-                  - dateOfIssuance
-                  - drivingLicenseID
-                  - drivingClass
-                  additionalProperties: true
+              emailAddress:
+                type: string
+                format: email
+              givenName:
+                type: string
+              familyName:
+                type: string
+              dateOfIssuance:
+                type: string
+                format: date-time
+              drivingLicenseID:
+                type: string
+              drivingClass:
+                type: integer
+            required:
+            - emailAddress
+            - familyName
+            - dateOfIssuance
+            - drivingLicenseID
+            - drivingClass
+            additionalProperties: false
         tags:
           description: Tokens that allow to lookup and filter the credential schema
             records.
@@ -1913,34 +1915,32 @@ components:
     CredentialSchemaResponse:
       example:
         schema:
-          $id: driving-license-1.0
+          $id: https://example.com/driving-license-1.0
           $schema: https://json-schema.org/draft/2020-12/schema
           description: Driving License
           type: object
           properties:
-            credentialSubject:
-              type: object
-              properties:
-                emailAddress:
-                  type: string
-                  format: email
-                givenName:
-                  type: string
-                familyName:
-                  type: string
-                dateOfIssuance:
-                  type: datetime
-                drivingLicenseID:
-                  type: string
-                drivingClass:
-                  type: integer
-                required:
-                - emailAddress
-                - familyName
-                - dateOfIssuance
-                - drivingLicenseID
-                - drivingClass
-                additionalProperties: true
+            emailAddress:
+              type: string
+              format: email
+            givenName:
+              type: string
+            familyName:
+              type: string
+            dateOfIssuance:
+              type: string
+              format: date-time
+            drivingLicenseID:
+              type: string
+            drivingClass:
+              type: integer
+          required:
+          - emailAddress
+          - familyName
+          - dateOfIssuance
+          - drivingLicenseID
+          - drivingClass
+          additionalProperties: false
         authored: 2022-03-10T12:00:00Z
         author: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff
         kind: CredentialSchema
@@ -2012,34 +2012,32 @@ components:
           description: Valid JSON Schema where the Credential Schema data fields are
             defined. A piece of Metadata
           example:
-            $id: driving-license-1.0
+            $id: https://example.com/driving-license-1.0
             $schema: https://json-schema.org/draft/2020-12/schema
             description: Driving License
             type: object
             properties:
-              credentialSubject:
-                type: object
-                properties:
-                  emailAddress:
-                    type: string
-                    format: email
-                  givenName:
-                    type: string
-                  familyName:
-                    type: string
-                  dateOfIssuance:
-                    type: datetime
-                  drivingLicenseID:
-                    type: string
-                  drivingClass:
-                    type: integer
-                  required:
-                  - emailAddress
-                  - familyName
-                  - dateOfIssuance
-                  - drivingLicenseID
-                  - drivingClass
-                  additionalProperties: true
+              emailAddress:
+                type: string
+                format: email
+              givenName:
+                type: string
+              familyName:
+                type: string
+              dateOfIssuance:
+                type: string
+                format: date-time
+              drivingLicenseID:
+                type: string
+              drivingClass:
+                type: integer
+            required:
+            - emailAddress
+            - familyName
+            - dateOfIssuance
+            - drivingLicenseID
+            - drivingClass
+            additionalProperties: false
         author:
           description: DID of the identity which authored the credential schema. A
             piece of Metadata.
@@ -2083,34 +2081,32 @@ components:
         previous: /prism-agent/schema-registry/schemas?skip=0&limit=10
         contents:
         - schema:
-            $id: driving-license-1.0
+            $id: https://example.com/driving-license-1.0
             $schema: https://json-schema.org/draft/2020-12/schema
             description: Driving License
             type: object
             properties:
-              credentialSubject:
-                type: object
-                properties:
-                  emailAddress:
-                    type: string
-                    format: email
-                  givenName:
-                    type: string
-                  familyName:
-                    type: string
-                  dateOfIssuance:
-                    type: datetime
-                  drivingLicenseID:
-                    type: string
-                  drivingClass:
-                    type: integer
-                  required:
-                  - emailAddress
-                  - familyName
-                  - dateOfIssuance
-                  - drivingLicenseID
-                  - drivingClass
-                  additionalProperties: true
+              emailAddress:
+                type: string
+                format: email
+              givenName:
+                type: string
+              familyName:
+                type: string
+              dateOfIssuance:
+                type: string
+                format: date-time
+              drivingLicenseID:
+                type: string
+              drivingClass:
+                type: integer
+            required:
+            - emailAddress
+            - familyName
+            - dateOfIssuance
+            - drivingLicenseID
+            - drivingClass
+            additionalProperties: false
           authored: 2022-03-10T12:00:00Z
           author: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff
           kind: CredentialSchema
@@ -2135,34 +2131,32 @@ components:
             jws: eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il0sImt0eSI6Ik...
             domain: prims.atala.com
         - schema:
-            $id: driving-license-1.0
+            $id: https://example.com/driving-license-1.0
             $schema: https://json-schema.org/draft/2020-12/schema
             description: Driving License
             type: object
             properties:
-              credentialSubject:
-                type: object
-                properties:
-                  emailAddress:
-                    type: string
-                    format: email
-                  givenName:
-                    type: string
-                  familyName:
-                    type: string
-                  dateOfIssuance:
-                    type: datetime
-                  drivingLicenseID:
-                    type: string
-                  drivingClass:
-                    type: integer
-                  required:
-                  - emailAddress
-                  - familyName
-                  - dateOfIssuance
-                  - drivingLicenseID
-                  - drivingClass
-                  additionalProperties: true
+              emailAddress:
+                type: string
+                format: email
+              givenName:
+                type: string
+              familyName:
+                type: string
+              dateOfIssuance:
+                type: string
+                format: date-time
+              drivingLicenseID:
+                type: string
+              drivingClass:
+                type: integer
+            required:
+            - emailAddress
+            - familyName
+            - dateOfIssuance
+            - drivingLicenseID
+            - drivingClass
+            additionalProperties: false
           authored: 2022-03-10T12:00:00Z
           author: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff
           kind: CredentialSchema
@@ -2404,7 +2398,7 @@ components:
       example:
         validityPeriod: 3600.0
         recordId: 80d612dc-0ded-4ac9-90b4-1b8eabb04545
-        createdAt: 2023-06-13T17:43:04.562064Z
+        createdAt: 2023-06-19T13:03:07.241041Z
         issuingDID: did:prism:issuerofverifiablecredentials
         role: Issuer
         jwtCredential: jwtCredential
@@ -2426,12 +2420,9 @@ components:
           format: double
           type: number
         claims:
-          additionalProperties:
-            type: string
           description: The claims that will be associated with the issued verifiable
             credential.
           example: "(firstname,Alice)"
-          type: object
         automaticIssuance:
           description: "Specifies whether or not the credential should be automatically\
             \ generated and issued when receiving the `CredentialRequest` from the\
@@ -2445,7 +2436,7 @@ components:
           type: string
         createdAt:
           description: The date and time when the issue credential record was created.
-          example: 2023-06-13T17:43:04.562064Z
+          example: 2023-06-19T13:03:07.241041Z
           format: date-time
           type: string
         updatedAt:
@@ -2485,7 +2476,7 @@ components:
         contents:
         - validityPeriod: 3600.0
           recordId: 80d612dc-0ded-4ac9-90b4-1b8eabb04545
-          createdAt: 2023-06-13T17:43:04.562064Z
+          createdAt: 2023-06-19T13:03:07.241041Z
           issuingDID: did:prism:issuerofverifiablecredentials
           role: Issuer
           jwtCredential: jwtCredential
@@ -2496,7 +2487,7 @@ components:
           protocolState: OfferPending
         - validityPeriod: 3600.0
           recordId: 80d612dc-0ded-4ac9-90b4-1b8eabb04545
-          createdAt: 2023-06-13T17:43:04.562064Z
+          createdAt: 2023-06-19T13:03:07.241041Z
           issuingDID: did:prism:issuerofverifiablecredentials
           role: Issuer
           jwtCredential: jwtCredential
@@ -2618,12 +2609,6 @@ components:
       - kind
       - pageOf
       - self
-      type: object
-    Map_String:
-      additionalProperties:
-        type: string
-      description: The claims that will be associated with the issued verifiable credential.
-      example: "(firstname,Alice)"
       type: object
     Options:
       description: "The options to use when creating the proof presentation request\

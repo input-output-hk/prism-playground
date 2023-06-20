@@ -1,6 +1,5 @@
 # Project exclude paths
 .env
-/.env
 .idea
 /notebooks/.ipynb_checkpoints/
 /notebooks/*/.ipynb_checkpoints/

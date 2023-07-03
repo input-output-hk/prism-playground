@@ -15,6 +15,12 @@ T = TypeVar("T", bound="PresentationStatus")
 @attr.s(auto_attribs=True)
 class PresentationStatus:
     """
+    Example:
+        {'presentationId': '3c6d9fa5-d277-431e-a6cb-d3956e47e610', 'data': ['data', 'data'], 'proofs': [{'schemaId':
+            'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']}, {'schemaId':
+            'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']}], 'connectionId':
+            'bc528dc8-69f1-4c5a-a508-5f8019047900', 'status': 'RequestPending'}
+
     Attributes:
         presentation_id (str): The unique identifier of the presentation record. Example:
             3c6d9fa5-d277-431e-a6cb-d3956e47e610.

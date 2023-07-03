@@ -11,6 +11,9 @@ T = TypeVar("T", bound="UpdateManagedDIDServiceAction")
 class UpdateManagedDIDServiceAction:
     """A patch to existing Service. 'type' and 'serviceEndpoint' cannot both be empty.
 
+    Example:
+        {'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}
+
     Attributes:
         id (str): The id of the service to update Example: service-1.
         type (Union[Unset, str]): The type of the service Example: LinkedDomains.

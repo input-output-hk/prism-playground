@@ -10,6 +10,9 @@ T = TypeVar("T", bound="CreateConnectionRequest")
 @attr.s(auto_attribs=True)
 class CreateConnectionRequest:
     """
+    Example:
+        {'label': 'Peter'}
+
     Attributes:
         label (Union[Unset, str]): A human readable alias for the connection. Example: Peter.
     """

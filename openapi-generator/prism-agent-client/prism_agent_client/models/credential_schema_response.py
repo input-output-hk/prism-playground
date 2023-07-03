@@ -16,6 +16,26 @@ T = TypeVar("T", bound="CredentialSchemaResponse")
 @attr.s(auto_attribs=True)
 class CredentialSchemaResponse:
     """
+    Example:
+        {'schema': {'$id': 'https://example.com/driving-license-1.0', '$schema': 'https://json-
+            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object', 'properties':
+            {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName': {'type': 'string'}, 'familyName': {'type':
+            'string'}, 'dateOfIssuance': {'type': 'string', 'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'},
+            'drivingClass': {'type': 'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
+            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'authored': datetime.datetime(2022, 3, 10,
+            12, 0, tzinfo=datetime.timezone.utc), 'author':
+            'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'kind': 'CredentialSchema',
+            'description': 'Simple credential schema for the driving licence verifiable credential.', 'longId': 'did:prism:4
+            a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff/0527aea1-d131-3948-a34d-
+            03af39aba8b4?version=1.0.0', 'type': 'https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json',
+            'version': '1.0.0', 'tags': ['tags', 'tags'], 'name': 'DrivingLicense', 'guid':
+            '0527aea1-d131-3948-a34d-03af39aba8b4', 'self': '/prism-agent/schema-
+            registry/schemas/0527aea1-d131-3948-a34d-03af39aba8b4', 'id': '0527aea1-d131-3948-a34d-03af39aba8b5', 'proof':
+            {'type': 'Ed25519Signature2018', 'created': datetime.datetime(2022, 3, 10, 12, 0, tzinfo=datetime.timezone.utc),
+            'verificationMethod': 'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff#key-1',
+            'proofPurpose': 'assertionMethod', 'proofValue': 'FiPfjknHikKmZ...', 'jws':
+            'eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il0sImt0eSI6Ik...', 'domain': 'prims.atala.com'}}
+
     Attributes:
         guid (str): Globally unique id of the credential schema.It's composed from the bytes of the string that contain
             the `author`, `name`, and `version` values.The string format looks like the resource identifier:
@@ -39,7 +59,7 @@ class CredentialSchemaResponse:
         author (str): DID of the identity which authored the credential schema. A piece of Metadata. Example:
             did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff.
         authored (datetime.datetime): [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) date on which the credential
-            schema was created. A piece of Metadata. Example: 2022-03-10T12:00Z.
+            schema was created. A piece of Metadata. Example: 2022-03-10 12:00:00+00:00.
         kind (str): A string that identifies the type of resource being returned in the response. Example:
             CredentialSchema.
         self_ (str): The URL that uniquely identifies the resource being returned in the response. Example: /prism-
@@ -49,9 +69,10 @@ class CredentialSchemaResponse:
             d131-3948-a34d-03af39aba8b4?version=1.0.0.
         tags (Union[Unset, List[str]]): Tokens that allow to lookup and filter the credential schema records.
         proof (Union[Unset, Proof]): A digital signature over the Credential Schema for the sake of asserting
-            authorship. A piece of Metadata. Example: {'type': 'Ed25519Signature2018', 'created': '2022-03-10T12:00:00Z',
-            'verificationMethod': 'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff#key-1',
-            'proofPurpose': 'assertionMethod', 'proofValue': 'FiPfjknHikKmZ...', 'jws':
+            authorship. A piece of Metadata. Example: {'type': 'Ed25519Signature2018', 'created': datetime.datetime(2022, 3,
+            10, 12, 0, tzinfo=datetime.timezone.utc), 'verificationMethod':
+            'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff#key-1', 'proofPurpose':
+            'assertionMethod', 'proofValue': 'FiPfjknHikKmZ...', 'jws':
             'eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il0sImt0eSI6Ik...', 'domain': 'prims.atala.com'}.
     """
 

@@ -14,6 +14,16 @@ T = TypeVar("T", bound="UpdateManagedDIDRequest")
 @attr.s(auto_attribs=True)
 class UpdateManagedDIDRequest:
     """
+    Example:
+        {'actions': [{'actionType': None, 'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id':
+            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'},
+            'updateService': {'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
+            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}}, {'actionType': None, 'removeKey':
+            {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id': 'service-1', 'serviceEndpoint':
+            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'updateService': {'id': 'service-1',
+            'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'addKey': {'purpose':
+            'authentication', 'id': 'key-1'}}]}
+
     Attributes:
         actions (Union[Unset, List['UpdateManagedDIDRequestAction']]):
     """

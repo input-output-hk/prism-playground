@@ -21,15 +21,24 @@ class UpdateManagedDIDRequestAction:
     The field `addKey`, `removeKey`, `addService`, `removeService`, `updateService` must corresponds to
     the `actionType` specified. For example, `addKey` must be present when `actionType` is `ADD_KEY`.
 
+        Example:
+            {'actionType': None, 'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id': 'service-1',
+                'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'updateService': {'id':
+                'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'addKey':
+                {'purpose': 'authentication', 'id': 'key-1'}}
+
         Attributes:
             action_type (ActionType):
-            add_key (Union[Unset, ManagedDIDKeyTemplate]): key-pair template to add to DID document.
-            remove_key (Union[Unset, RemoveEntryById]):
+            add_key (Union[Unset, ManagedDIDKeyTemplate]): key-pair template to add to DID document. Example: {'purpose':
+                'authentication', 'id': 'key-1'}.
+            remove_key (Union[Unset, RemoveEntryById]):  Example: {'id': 'id'}.
             add_service (Union[Unset, Service]): A service expressed in the DID document. https://www.w3.org/TR/did-
-                core/#services
-            remove_service (Union[Unset, RemoveEntryById]):
+                core/#services Example: {'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
+                'LinkedDomains'}.
+            remove_service (Union[Unset, RemoveEntryById]):  Example: {'id': 'id'}.
             update_service (Union[Unset, UpdateManagedDIDServiceAction]): A patch to existing Service. 'type' and
-                'serviceEndpoint' cannot both be empty.
+                'serviceEndpoint' cannot both be empty. Example: {'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint',
+                'serviceEndpoint'], 'type': 'LinkedDomains'}.
     """
 
     action_type: ActionType

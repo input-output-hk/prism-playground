@@ -10,6 +10,9 @@ T = TypeVar("T", bound="ProofRequestAux")
 @attr.s(auto_attribs=True)
 class ProofRequestAux:
     """
+    Example:
+        {'schemaId': 'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']}
+
     Attributes:
         schema_id (str): The unique identifier of a schema the VC should comply with. Example:
             https://schema.org/Person.

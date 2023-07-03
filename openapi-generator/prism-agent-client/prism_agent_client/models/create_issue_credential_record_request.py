@@ -10,6 +10,11 @@ T = TypeVar("T", bound="CreateIssueCredentialRecordRequest")
 @attr.s(auto_attribs=True)
 class CreateIssueCredentialRecordRequest:
     """
+    Example:
+        {'validityPeriod': 3600.0, 'issuingDID': 'did:prism:issuerofverifiablecredentials', 'schemaId': 'https://agent-
+            host.com/prism-agent/schema-registry/schemas/d9569cec-c81e-4779-aa86-0d5994d82676', 'claims':
+            '(firstname,Alice)', 'connectionId': 'connectionId', 'automaticIssuance': True}
+
     Attributes:
         claims (Any): The claims that will be associated with the issued verifiable credential. Example:
             (firstname,Alice).

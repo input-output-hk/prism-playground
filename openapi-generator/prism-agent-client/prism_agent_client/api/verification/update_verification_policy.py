@@ -88,7 +88,10 @@ def sync_detailed(
     Args:
         id (str):
         nonce (int):
-        json_body (VerificationPolicyInput):
+        json_body (VerificationPolicyInput):  Example: {'name': 'name', 'description':
+            'description', 'id': '046b6c7f-0b8a-43b9-b35d-6489e6daee91', 'constraints':
+            [{'trustedIssuers': ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'},
+            {'trustedIssuers': ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -127,7 +130,10 @@ def sync(
     Args:
         id (str):
         nonce (int):
-        json_body (VerificationPolicyInput):
+        json_body (VerificationPolicyInput):  Example: {'name': 'name', 'description':
+            'description', 'id': '046b6c7f-0b8a-43b9-b35d-6489e6daee91', 'constraints':
+            [{'trustedIssuers': ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'},
+            {'trustedIssuers': ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -159,7 +165,10 @@ async def asyncio_detailed(
     Args:
         id (str):
         nonce (int):
-        json_body (VerificationPolicyInput):
+        json_body (VerificationPolicyInput):  Example: {'name': 'name', 'description':
+            'description', 'id': '046b6c7f-0b8a-43b9-b35d-6489e6daee91', 'constraints':
+            [{'trustedIssuers': ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'},
+            {'trustedIssuers': ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -196,7 +205,10 @@ async def asyncio(
     Args:
         id (str):
         nonce (int):
-        json_body (VerificationPolicyInput):
+        json_body (VerificationPolicyInput):  Example: {'name': 'name', 'description':
+            'description', 'id': '046b6c7f-0b8a-43b9-b35d-6489e6daee91', 'constraints':
+            [{'trustedIssuers': ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'},
+            {'trustedIssuers': ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

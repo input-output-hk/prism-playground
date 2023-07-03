@@ -33,10 +33,10 @@ export interface IssueCredentialRecord {
     validityPeriod?: number;
     /**
      * The claims that will be associated with the issued verifiable credential.
-     * @type {{ [key: string]: string; }}
+     * @type {any}
      * @memberof IssueCredentialRecord
      */
-    claims: { [key: string]: string; };
+    claims: any | null;
     /**
      * Specifies whether or not the credential should be automatically generated and issued when receiving the `CredentialRequest` from the holder. If set to `false`, a manual approval by the issuer via API call will be required for the VC to be issued.
      * @type {boolean}

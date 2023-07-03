@@ -77,7 +77,7 @@ def sync_detailed(
     connection, for example `{'label': \"Bob\"}`
 
     Args:
-        json_body (CreateConnectionRequest):
+        json_body (CreateConnectionRequest):  Example: {'label': 'Peter'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -115,7 +115,7 @@ def sync(
     connection, for example `{'label': \"Bob\"}`
 
     Args:
-        json_body (CreateConnectionRequest):
+        json_body (CreateConnectionRequest):  Example: {'label': 'Peter'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -146,7 +146,7 @@ async def asyncio_detailed(
     connection, for example `{'label': \"Bob\"}`
 
     Args:
-        json_body (CreateConnectionRequest):
+        json_body (CreateConnectionRequest):  Example: {'label': 'Peter'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -182,7 +182,7 @@ async def asyncio(
     connection, for example `{'label': \"Bob\"}`
 
     Args:
-        json_body (CreateConnectionRequest):
+        json_body (CreateConnectionRequest):  Example: {'label': 'Peter'}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

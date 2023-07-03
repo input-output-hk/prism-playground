@@ -16,6 +16,13 @@ T = TypeVar("T", bound="VerificationPolicy")
 @attr.s(auto_attribs=True)
 class VerificationPolicy:
     """
+    Example:
+        {'createdAt': datetime.datetime(2000, 1, 23, 4, 56, 7, tzinfo=datetime.timezone.utc), 'kind': 'kind', 'name':
+            'name', 'self': 'self', 'description': 'description', 'id': '046b6c7f-0b8a-43b9-b35d-6489e6daee91', 'nonce': 0,
+            'constraints': [{'trustedIssuers': ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'},
+            {'trustedIssuers': ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'}], 'updatedAt':
+            datetime.datetime(2000, 1, 23, 4, 56, 7, tzinfo=datetime.timezone.utc)}
+
     Attributes:
         self_ (str):
         kind (str):

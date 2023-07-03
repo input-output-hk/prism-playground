@@ -88,7 +88,18 @@ def sync_detailed(
     Args:
         author (str):
         id (str):
-        json_body (CredentialSchemaInput):
+        json_body (CredentialSchemaInput):  Example: {'schema': {'$id':
+            'https://example.com/driving-license-1.0', '$schema': 'https://json-
+            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object',
+            'properties': {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName':
+            {'type': 'string'}, 'familyName': {'type': 'string'}, 'dateOfIssuance': {'type': 'string',
+            'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'}, 'drivingClass': {'type':
+            'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
+            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'author':
+            'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name':
+            'DrivingLicense', 'description': 'Simple credential schema for the driving licence
+            verifiable credential.', 'type': 'https://w3c-ccg.github.io/vc-json-
+            schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['tags', 'tags']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -129,7 +140,18 @@ def sync(
     Args:
         author (str):
         id (str):
-        json_body (CredentialSchemaInput):
+        json_body (CredentialSchemaInput):  Example: {'schema': {'$id':
+            'https://example.com/driving-license-1.0', '$schema': 'https://json-
+            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object',
+            'properties': {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName':
+            {'type': 'string'}, 'familyName': {'type': 'string'}, 'dateOfIssuance': {'type': 'string',
+            'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'}, 'drivingClass': {'type':
+            'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
+            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'author':
+            'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name':
+            'DrivingLicense', 'description': 'Simple credential schema for the driving licence
+            verifiable credential.', 'type': 'https://w3c-ccg.github.io/vc-json-
+            schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['tags', 'tags']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -163,7 +185,18 @@ async def asyncio_detailed(
     Args:
         author (str):
         id (str):
-        json_body (CredentialSchemaInput):
+        json_body (CredentialSchemaInput):  Example: {'schema': {'$id':
+            'https://example.com/driving-license-1.0', '$schema': 'https://json-
+            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object',
+            'properties': {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName':
+            {'type': 'string'}, 'familyName': {'type': 'string'}, 'dateOfIssuance': {'type': 'string',
+            'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'}, 'drivingClass': {'type':
+            'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
+            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'author':
+            'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name':
+            'DrivingLicense', 'description': 'Simple credential schema for the driving licence
+            verifiable credential.', 'type': 'https://w3c-ccg.github.io/vc-json-
+            schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['tags', 'tags']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -202,7 +235,18 @@ async def asyncio(
     Args:
         author (str):
         id (str):
-        json_body (CredentialSchemaInput):
+        json_body (CredentialSchemaInput):  Example: {'schema': {'$id':
+            'https://example.com/driving-license-1.0', '$schema': 'https://json-
+            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object',
+            'properties': {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName':
+            {'type': 'string'}, 'familyName': {'type': 'string'}, 'dateOfIssuance': {'type': 'string',
+            'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'}, 'drivingClass': {'type':
+            'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
+            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'author':
+            'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name':
+            'DrivingLicense', 'description': 'Simple credential schema for the driving licence
+            verifiable credential.', 'type': 'https://w3c-ccg.github.io/vc-json-
+            schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['tags', 'tags']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

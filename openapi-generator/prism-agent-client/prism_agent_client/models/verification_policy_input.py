@@ -14,6 +14,11 @@ T = TypeVar("T", bound="VerificationPolicyInput")
 @attr.s(auto_attribs=True)
 class VerificationPolicyInput:
     """
+    Example:
+        {'name': 'name', 'description': 'description', 'id': '046b6c7f-0b8a-43b9-b35d-6489e6daee91', 'constraints':
+            [{'trustedIssuers': ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'}, {'trustedIssuers':
+            ['trustedIssuers', 'trustedIssuers'], 'schemaId': 'schemaId'}]}
+
     Attributes:
         name (str):
         description (str):

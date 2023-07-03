@@ -95,7 +95,16 @@ def sync_detailed(
 
     Args:
         did_ref (str):
-        json_body (UpdateManagedDIDRequest):
+        json_body (UpdateManagedDIDRequest):  Example: {'actions': [{'actionType': None,
+            'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id':
+            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
+            'LinkedDomains'}, 'updateService': {'id': 'service-1', 'serviceEndpoint':
+            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'addKey': {'purpose':
+            'authentication', 'id': 'key-1'}}, {'actionType': None, 'removeKey': {'id': 'id'},
+            'removeService': {'id': 'id'}, 'addService': {'id': 'service-1', 'serviceEndpoint':
+            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'updateService': {'id':
+            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
+            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -135,7 +144,16 @@ def sync(
 
     Args:
         did_ref (str):
-        json_body (UpdateManagedDIDRequest):
+        json_body (UpdateManagedDIDRequest):  Example: {'actions': [{'actionType': None,
+            'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id':
+            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
+            'LinkedDomains'}, 'updateService': {'id': 'service-1', 'serviceEndpoint':
+            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'addKey': {'purpose':
+            'authentication', 'id': 'key-1'}}, {'actionType': None, 'removeKey': {'id': 'id'},
+            'removeService': {'id': 'id'}, 'addService': {'id': 'service-1', 'serviceEndpoint':
+            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'updateService': {'id':
+            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
+            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -168,7 +186,16 @@ async def asyncio_detailed(
 
     Args:
         did_ref (str):
-        json_body (UpdateManagedDIDRequest):
+        json_body (UpdateManagedDIDRequest):  Example: {'actions': [{'actionType': None,
+            'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id':
+            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
+            'LinkedDomains'}, 'updateService': {'id': 'service-1', 'serviceEndpoint':
+            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'addKey': {'purpose':
+            'authentication', 'id': 'key-1'}}, {'actionType': None, 'removeKey': {'id': 'id'},
+            'removeService': {'id': 'id'}, 'addService': {'id': 'service-1', 'serviceEndpoint':
+            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'updateService': {'id':
+            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
+            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -206,7 +233,16 @@ async def asyncio(
 
     Args:
         did_ref (str):
-        json_body (UpdateManagedDIDRequest):
+        json_body (UpdateManagedDIDRequest):  Example: {'actions': [{'actionType': None,
+            'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id':
+            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
+            'LinkedDomains'}, 'updateService': {'id': 'service-1', 'serviceEndpoint':
+            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'addKey': {'purpose':
+            'authentication', 'id': 'key-1'}}, {'actionType': None, 'removeKey': {'id': 'id'},
+            'removeService': {'id': 'id'}, 'addService': {'id': 'service-1', 'serviceEndpoint':
+            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'updateService': {'id':
+            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
+            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

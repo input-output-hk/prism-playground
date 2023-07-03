@@ -8,6 +8,9 @@ T = TypeVar("T", bound="RequestPresentationOutput")
 @attr.s(auto_attribs=True)
 class RequestPresentationOutput:
     """
+    Example:
+        {'presentationId': '11c91493-01b3-4c4d-ac36-b336bab5bddf'}
+
     Attributes:
         presentation_id (str): Ref to the id on the presentation (db ref) Example: 11c91493-01b3-4c4d-ac36-b336bab5bddf.
     """

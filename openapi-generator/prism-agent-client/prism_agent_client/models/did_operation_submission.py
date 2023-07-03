@@ -8,6 +8,10 @@ T = TypeVar("T", bound="DidOperationSubmission")
 @attr.s(auto_attribs=True)
 class DidOperationSubmission:
     """
+    Example:
+        {'id': '98e6a4db10e58fcc011dd8def5ce99fd8b52af39e61e5fb436dc28259139818b', 'didRef':
+            'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff'}
+
     Attributes:
         id (str): A scheduled operation ID Example: 98e6a4db10e58fcc011dd8def5ce99fd8b52af39e61e5fb436dc28259139818b.
         did_ref (str): A DID affected by the scheduled operation Example:

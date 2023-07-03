@@ -26,11 +26,17 @@ export interface CreateIssueCredentialRecordRequest {
      */
     validityPeriod?: number;
     /**
-     * The claims that will be associated with the issued verifiable credential.
-     * @type {{ [key: string]: string; }}
+     * The unique identifier of the schema used for this credential offer.
+     * @type {string}
      * @memberof CreateIssueCredentialRecordRequest
      */
-    claims: { [key: string]: string; };
+    schemaId?: string;
+    /**
+     * The claims that will be associated with the issued verifiable credential.
+     * @type {any}
+     * @memberof CreateIssueCredentialRecordRequest
+     */
+    claims: any | null;
     /**
      * Specifies whether or not the credential should be automatically generated and issued when receiving the `CredentialRequest` from the holder. If set to `false`, a manual approval by the issuer via API call will be required for the VC to be issued.
      * @type {boolean}
@@ -74,6 +80,7 @@ export function CreateIssueCredentialRecordRequestFromJSONTyped(json: any, ignor
     return {
         
         'validityPeriod': !exists(json, 'validityPeriod') ? undefined : json['validityPeriod'],
+        'schemaId': !exists(json, 'schemaId') ? undefined : json['schemaId'],
         'claims': json['claims'],
         'automaticIssuance': !exists(json, 'automaticIssuance') ? undefined : json['automaticIssuance'],
         'issuingDID': json['issuingDID'],
@@ -91,6 +98,7 @@ export function CreateIssueCredentialRecordRequestToJSON(value?: CreateIssueCred
     return {
         
         'validityPeriod': value.validityPeriod,
+        'schemaId': value.schemaId,
         'claims': value.claims,
         'automaticIssuance': value.automaticIssuance,
         'issuingDID': value.issuingDID,

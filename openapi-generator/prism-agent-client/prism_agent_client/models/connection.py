@@ -18,12 +18,32 @@ T = TypeVar("T", bound="Connection")
 @attr.s(auto_attribs=True)
 class Connection:
     """
+    Example:
+        {'createdAt': datetime.datetime(2022, 3, 10, 12, 0, tzinfo=datetime.timezone.utc), 'theirDid': 'did:peer:67890',
+            'role': 'Inviter', 'invitation': {'invitationUrl': 'https://my.domain.com/path?_oob=eyJAaWQiOiIzZmE4NWY2NC01NzE3
+            LTQ1NjItYjNmYy0yYzk2M2Y2NmFmYTYiLCJAdHlwZSI6Imh0dHBzOi8vZGlkY29tbS5vcmcvbXktZmFtaWx5LzEuMC9teS1tZXNzYWdlLXR5cGUi
+            LCJkaWQiOiJXZ1d4cXp0ck5vb0c5MlJYdnhTVFd2IiwiaW1hZ2VVcmwiOiJodHRwOi8vMTkyLjE2OC41Ni4xMDEvaW1nL2xvZ28uanBnIiwibGFi
+            ZWwiOiJCb2IiLCJyZWNpcGllbnRLZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQWpacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInJvdXRpbmdL
+            ZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQWpacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInNlcnZpY2VFbmRwb2ludCI6Imh0dHA6Ly8xOTIu
+            MTY4LjU2LjEwMTo4MDIwIn0=', 'from': 'did:peer:1234457', 'id': '0527aea1-d131-3948-a34d-03af39aba8b4', 'type':
+            'https://didcomm.org/out-of-band/2.0/invitation'}, 'kind': 'Connection', 'connectionId':
+            '0527aea1-d131-3948-a34d-03af39aba8b4', 'self': 'https://atala-prism-products.io/connections/ABCD-1234',
+            'label': 'Peter', 'myDid': 'did:peer:12345', 'state': 'InvitationGenerated', 'updatedAt':
+            datetime.datetime(2022, 3, 10, 12, 0, tzinfo=datetime.timezone.utc)}
+
     Attributes:
         connection_id (str): The unique identifier of the connection. Example: 0527aea1-d131-3948-a34d-03af39aba8b4.
         role (ConnectionRole): The role played by the Prism agent in the connection flow. Example: Inviter.
         state (ConnectionState): The current state of the connection protocol execution. Example: InvitationGenerated.
-        invitation (ConnectionInvitation): The invitation for this connection
-        created_at (datetime.datetime): The date and time the connection record was created. Example: 2022-03-10T12:00Z.
+        invitation (ConnectionInvitation): The invitation for this connection Example: {'invitationUrl': 'https://my.dom
+            ain.com/path?_oob=eyJAaWQiOiIzZmE4NWY2NC01NzE3LTQ1NjItYjNmYy0yYzk2M2Y2NmFmYTYiLCJAdHlwZSI6Imh0dHBzOi8vZGlkY29tbS
+            5vcmcvbXktZmFtaWx5LzEuMC9teS1tZXNzYWdlLXR5cGUiLCJkaWQiOiJXZ1d4cXp0ck5vb0c5MlJYdnhTVFd2IiwiaW1hZ2VVcmwiOiJodHRwOi
+            8vMTkyLjE2OC41Ni4xMDEvaW1nL2xvZ28uanBnIiwibGFiZWwiOiJCb2IiLCJyZWNpcGllbnRLZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQW
+            pacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInJvdXRpbmdLZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQWpacGZrY0pDd0R3blpuNnozd1htcV
+            BWIl0sInNlcnZpY2VFbmRwb2ludCI6Imh0dHA6Ly8xOTIuMTY4LjU2LjEwMTo4MDIwIn0=', 'from': 'did:peer:1234457', 'id':
+            '0527aea1-d131-3948-a34d-03af39aba8b4', 'type': 'https://didcomm.org/out-of-band/2.0/invitation'}.
+        created_at (datetime.datetime): The date and time the connection record was created. Example: 2022-03-10
+            12:00:00+00:00.
         self_ (str): The reference to the connection resource. Example: https://atala-prism-
             products.io/connections/ABCD-1234.
         kind (str): The type of object returned. In this case a `Connection`. Example: Connection.
@@ -33,7 +53,7 @@ class Connection:
         their_did (Union[Unset, str]): The DID representing the other peer as the an inviter or invitee in this specific
             connection. Example: did:peer:67890.
         updated_at (Union[Unset, datetime.datetime]): The date and time the connection record was last updated. Example:
-            2022-03-10T12:00Z.
+            2022-03-10 12:00:00+00:00.
     """
 
     connection_id: str

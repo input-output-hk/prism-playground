@@ -80,7 +80,8 @@ def sync_detailed(
 
     Args:
         presentation_id (str):
-        json_body (RequestPresentationAction):
+        json_body (RequestPresentationAction):  Example: {'action': 'request-accept', 'proofId':
+            ['proofId', 'proofId']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -117,7 +118,8 @@ def sync(
 
     Args:
         presentation_id (str):
-        json_body (RequestPresentationAction):
+        json_body (RequestPresentationAction):  Example: {'action': 'request-accept', 'proofId':
+            ['proofId', 'proofId']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -147,7 +149,8 @@ async def asyncio_detailed(
 
     Args:
         presentation_id (str):
-        json_body (RequestPresentationAction):
+        json_body (RequestPresentationAction):  Example: {'action': 'request-accept', 'proofId':
+            ['proofId', 'proofId']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -182,7 +185,8 @@ async def asyncio(
 
     Args:
         presentation_id (str):
-        json_body (RequestPresentationAction):
+        json_body (RequestPresentationAction):  Example: {'action': 'request-accept', 'proofId':
+            ['proofId', 'proofId']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

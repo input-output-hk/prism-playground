@@ -8,6 +8,12 @@ T = TypeVar("T", bound="CreateManagedDIDResponse")
 @attr.s(auto_attribs=True)
 class CreateManagedDIDResponse:
     """
+    Example:
+        {'longFormDid': 'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff:Cr4BCrsBElsKBmF1dGgt
+            MRAEQk8KCXNlY3AyNTZrMRIg0opTuxu-zt6aRbT1tPniG4eu4CYsQPM3rrLzvzNiNgwaIIFTnyT2N4U7qCQ78qtWC3-p0el6Hvv8qxG5uuEw-WgM
+            ElwKB21hc3RlcjAQAUJPCglzZWNwMjU2azESIKhBU0eCOO6Vinz_8vhtFSAhYYqrkEXC8PHGxkuIUev8GiAydFHLXb7c22A1Uj_PR21NZp6BCDQq
+            Nq2xd244txRgsQ'}
+
     Attributes:
         long_form_did (str): A long-form DID for the created DID Example: did:prism:4a5b5cf0a513e83b598bbea25cd619674674
             7f361a73ef77068268bc9bd732ff:Cr4BCrsBElsKBmF1dGgtMRAEQk8KCXNlY3AyNTZrMRIg0opTuxu-

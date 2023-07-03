@@ -9,6 +9,9 @@ T = TypeVar("T", bound="Service")
 class Service:
     """A service expressed in the DID document. https://www.w3.org/TR/did-core/#services
 
+    Example:
+        {'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}
+
     Attributes:
         id (str): The id of the service.
             Requires a URI fragment when use in create / update DID.

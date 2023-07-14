@@ -106,7 +106,6 @@ export class VerificationApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({

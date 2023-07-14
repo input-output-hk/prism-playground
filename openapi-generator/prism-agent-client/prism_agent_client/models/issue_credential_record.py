@@ -6,7 +6,8 @@ from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
 
-T = TypeVar("T", bound="IssueCredentialRecord")
+if TYPE_CHECKING:
+    from ..models.issue_credential_record_claims import IssueCredentialRecordClaims
 
 
 @attr.s(auto_attribs=True)

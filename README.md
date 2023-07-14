@@ -1,88 +1,113 @@
-# Prism Playground Tutorial
+# Prism V2 Playground  
 
-This quick guide help you to set up with Kotlin Jupyter Notebooks to develop tutorials for Atala PRISM Kotlin SDK. 
+This repo contains a Jupyter Notebook that runs from a docker container.  
+It's an easy way to interact with the PRISM Agent APIs via python jupyter-notebook.  
+It also includes scripts to run local Prism Agents. The default script will start/stop three Prism Agents for the various actors (`issuer`,`holder`, `verifier`) used as part the Prism Playground.  
 
-# Environment set up
+## Prerequisites 
+Install and start [Docker Desktop](https://www.docker.com/products/docker-desktop/) and `docker-compose` in your local machine and ensure you have an active internet connection.  
+To start the Prism Playground you can use the commands below to start and stop the Jupyter Notebook server and Prism Agents.
 
-Before building Docker container, please, set up the following environment variables:
-* `ATALA_GITHUB_ACTOR` - github username for the Atala PRISM repositories (atala-dev for common PPP token)
-* `ATALA_GITHUB_TOKEN` - Prism access token provided to Prism Pioneers
-* `ATALA_PRISM_VERSION` - version of Atala PRISM to use (latest for now is `v1.4.0`) 
+## Quick Start Guide
+### 1. Run Prism Playground and Local Prism Agents
+```bash
+cd <path>/prism-playground
 
-## Option 1:
+# Copy sample.env to .env
+cp sample.env .env
 
-```shell
-cp example.env .env
+# Set your Github PAT in the `.env` file
+> NOTE: Your Github PAT should have `read-packages` access
+ATALA_PRISM_SECRET_READ_ACCESS_TOKEN=<your Github PAT>
+
+# Load env file variables
+source .env
+ 
+# Login to ghcr
+echo $ATALA_PRISM_SECRET_READ_ACCESS_TOKEN | docker login ghcr.io -u atala-dev --password-stdin
+
+# Starting the Jupyter Notebook Server (Prism Playground)
+docker compose up --build -d
+
+# Starting the local Prism Agents.
+./run_agents.sh
+```
+### 2a. Access the Prism Playground Jupyter Notebooks
+The default password is `Prismv2`    
+This is the default location to access the Prism Playground notebooks:
+
+```bash
+http://127.0.0.1:8888/
 ```
 
-Once the example.env file is copied to .env, open the .env file and add the `PRISM_SDK_PASSWORD` token received from the Prism Pioneer program.
+### 2b. Access the Prism Agent Swagger API
+This is the default location to access the Prism Agent Swagger API:
+> NOTE: You need to pass in the `apikey` header with the value `kxr9i@6XgKBUxe%O`
 
-Then run the docker containers by executing:
+[Issuer Agent Swagger Interface](http://localhost:8080/docs/prism-agent/api/)  
+[Holder Agent Swagger Interface](http://localhost:8090/docs/prism-agent/api/)  
+[Verifier Agent Swagger Interface](http://localhost:9000/docs/prism-agent/api/)  
 
-```shell
-./run.sh
+ℹ️ If you are running Ubuntu (or Linux) operating system and have a firewall enabled ensure that you allow communication between the docker instances.
+Here is an example of adding a firewall rule with `ufw`:
+```bash
+sudo ufw allow to 172.17.0.1
 ```
 
-The docker containers should build and execute Jupyter Notebook. The link to access the notebooks will be printed to screen as part of the output.
+### 3. Stop Prism Playground and Local Prism Agents
+```bash
+cd <path>/prism-playground
 
-### Copy Atala Kotlin Dependancies into Jupyter Notebook
-In the project directory, you will find `atala_sdk_dependencies.txt` file with the following content:
-```text
-@file:DependsOn("/home/atala_prism_sdk/prism-api-jvm-v1.4.0.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-credentials-jvm-v1.4.0.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-identity-jvm-v1.4.0.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-crypto-jvm-v1.4.0.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-protos-jvm-v1.4.0.jar")
-...
+# Stopping the Jupyter Notebook Server (Prism Playground)
+docker-compose down
+
+# Stopping the local Prism Agents.
+./stop_agents.sh
 ```
 
-You have to copy this file in your notebook before executing any imports from Atala PRISM SDK to make everything work.
+## ℹ️ Customise Running Prism Agent Locally
+Detailed information on how to run Prism Agent and Prism Node locally can be found [here](agent/README.md).
 
-## Option 2:
-```shell
-export PRISM_SDK_USER=atala-dev
-export PRISM_SDK_PASSWORD=<secret-atala-token-ask-devs-for-it>
-export ATALA_PRISM_VERSION=v1.4.0
+## ℹ️ Generating Prism Agent Open API Clients
+Detailed information on how to generate Open API clients for Prism Agents in various programming languages can be found [here](openapi-generator/README.md).
+> NOTE: When updating or generating new clients ensure that you rebuild the Jupyter Notebook docker images.
+
+## ℹ️ Customise the Jupyter Notebook Environment (Optional steps)
+
+The config files are located in `./config` folder, edit the `jupyter-config.json` for customization.
+
+Remember that the local `./config` dir is mounted as `/home/jovyan/.jupyter/config` within the container.
+
+### Exposing the Jupyter Notebooks publicly
+In order to make the container publicly available, edit `docker-compose.yaml` and replace `- "127.0.0.1:8888:8888"` 
+with `- "8888:8888"`. Remember, changing the port and host inside `jupyter-config.json` will only change the settings
+inside the container, and likely to break the notebook.
+
+### Passphrase
+
+The default passphrase to access the notebook is `Prismv2`.
+
+You will need to edit the `./config/jupyter-config.json` file and change the value of `NotebookApp.password` key. The
+passphrase can be generated using the following command:
+
+```bash
+./passphrase
 ```
 
-### Build Docker container with Kotlin Jupyter kernel
+Use the output of the command to set the `NotebookApp.password` key.
 
-After you successfully set the environment from previous section,
-execute the following shell to build the Docker container:
-```shell
-docker build . \
-    --build-arg PRISM_SDK_USER=${PRISM_SDK_USER} \
-    --build-arg PRISM_SDK_PASSWORD=${PRISM_SDK_PASSWORD} \
-    --build-arg ATALA_PRISM_VERSION=${ATALA_PRISM_VERSION} -t prism-playground
-```
+### SSL
 
-### Getting Atala PRISM SDK dependencies to use in Jupyter
+If you choose to set ssl certificates, place them in the `./config` folder and state the location of the files
+as absolute paths in `./config/jupyter-config.json` starting with `/home/jovyan/work`:
 
-Unfortunately, there is no simple way to connect external protected dependencies in Jupyter Kotlin kernel alltogether.
-Neither new kernel creation nor all possible ways to pass additional `classpath` are not working without issues.
-Some of them are breaking Kernel itself, some are just not working. As the result, we have to do one additional step
-to prepare a quick file to copy-paste dependencies in the Notebook. To create such a file, execute the following command:
-```shell
-./gradlew saveAtalaSdkDependencies
-```
+```json
+{
+  "NotebookApp": {
 
-### Copy Atala Kotlin Dependancies into Jupyter Notebook
-In the project directory, you will find `atala_sdk_dependencies.txt` file with the following content:
-```text
-@file:DependsOn("/home/atala_prism_sdk/prism-api-jvm-v1.4.0.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-credentials-jvm-v1.4.0.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-identity-jvm-v1.4.0.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-crypto-jvm-v1.4.0.jar")
-@file:DependsOn("/home/atala_prism_sdk/prism-protos-jvm-v1.4.0.jar")
-...
-```
+    "certfile": "/home/jovyan/.jupyter/config/ssl-cert.pem",
+    "keyfile": "/home/jovyan/.jupyter/config/ssl-cert.key",
 
-You have to copy this file in your notebook before executing any imports from Atala PRISM SDK to make everything work.
-
-### Running Kotlin Jupyter kernel
-
-When you successfully built Docker container, you could run it as follows:
-
-```shell
-docker container run -it --rm -p 8888:8888 -v "$(pwd)"/notebooks:/home/jovyan/notebooks prism-playground
+  }
+}
 ```

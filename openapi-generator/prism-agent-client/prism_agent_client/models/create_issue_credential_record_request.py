@@ -26,6 +26,11 @@ class CreateIssueCredentialRecordRequest:
             issued. Example: 3600.0.
         schema_id (Union[Unset, str]): The unique identifier of the schema used for this credential offer. Example:
             https://agent-host.com/prism-agent/schema-registry/schemas/d9569cec-c81e-4779-aa86-0d5994d82676.
+        automatic_issuance (Union[Unset, bool]): Specifies whether or not the credential should be automatically
+            generated and issued when receiving the `CredentialRequest` from the holder. If set to `false`, a manual
+            approval by the issuer via API call will be required for the VC to be issued. Example: True.
+    """
+
     claims: Any
     issuing_did: str
     connection_id: str

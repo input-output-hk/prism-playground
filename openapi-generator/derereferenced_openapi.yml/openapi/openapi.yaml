@@ -2398,7 +2398,7 @@ components:
       example:
         validityPeriod: 3600.0
         recordId: 80d612dc-0ded-4ac9-90b4-1b8eabb04545
-        createdAt: 2023-07-03T19:39:31.935548Z
+        createdAt: 2023-07-17T22:24:00.115325Z
         issuingDID: did:prism:issuerofverifiablecredentials
         role: Issuer
         jwtCredential: jwtCredential
@@ -2436,7 +2436,7 @@ components:
           type: string
         createdAt:
           description: The date and time when the issue credential record was created.
-          example: 2023-07-03T19:39:31.935548Z
+          example: 2023-07-17T22:24:00.115325Z
           format: date-time
           type: string
         updatedAt:
@@ -2476,7 +2476,7 @@ components:
         contents:
         - validityPeriod: 3600.0
           recordId: 80d612dc-0ded-4ac9-90b4-1b8eabb04545
-          createdAt: 2023-07-03T19:39:31.935548Z
+          createdAt: 2023-07-17T22:24:00.115325Z
           issuingDID: did:prism:issuerofverifiablecredentials
           role: Issuer
           jwtCredential: jwtCredential
@@ -2487,7 +2487,7 @@ components:
           protocolState: OfferPending
         - validityPeriod: 3600.0
           recordId: 80d612dc-0ded-4ac9-90b4-1b8eabb04545
-          createdAt: 2023-07-03T19:39:31.935548Z
+          createdAt: 2023-07-17T22:24:00.115325Z
           issuingDID: did:prism:issuerofverifiablecredentials
           role: Issuer
           jwtCredential: jwtCredential

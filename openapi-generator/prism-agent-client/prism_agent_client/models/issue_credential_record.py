@@ -1,14 +1,10 @@
 import datetime
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 from dateutil.parser import isoparse
 
 from ..types import UNSET, Unset
-
-if TYPE_CHECKING:
-    from ..models.issue_credential_record_claims import IssueCredentialRecordClaims
-
 
 T = TypeVar("T", bound="IssueCredentialRecord")
 
@@ -18,19 +14,19 @@ class IssueCredentialRecord:
     """
     Example:
         {'validityPeriod': 3600.0, 'recordId': '80d612dc-0ded-4ac9-90b4-1b8eabb04545', 'createdAt':
-            datetime.datetime(2023, 6, 13, 17, 43, 4, 562064, tzinfo=datetime.timezone.utc), 'issuingDID':
+            datetime.datetime(2023, 7, 17, 22, 24, 0, 115325, tzinfo=datetime.timezone.utc), 'issuingDID':
             'did:prism:issuerofverifiablecredentials', 'role': 'Issuer', 'jwtCredential': 'jwtCredential', 'claims':
             '(firstname,Alice)', 'automaticIssuance': True, 'subjectId': 'did:prism:subjectofverifiablecredentials',
             'updatedAt': datetime.datetime(2000, 1, 23, 4, 56, 7, tzinfo=datetime.timezone.utc), 'protocolState':
             'OfferPending'}
 
     Attributes:
-        claims (IssueCredentialRecordClaims): The claims that will be associated with the issued verifiable credential.
-            Example: (firstname,Alice).
+        claims (Any): The claims that will be associated with the issued verifiable credential. Example:
+            (firstname,Alice).
         record_id (str): The unique identifier of the issue credential record. Example:
             80d612dc-0ded-4ac9-90b4-1b8eabb04545.
         created_at (datetime.datetime): The date and time when the issue credential record was created. Example:
-            2023-06-13 17:43:04.562064+00:00.
+            2023-07-17 22:24:00.115325+00:00.
         role (str): The role played by the Prism agent in the credential issuance flow. Example: Issuer.
         protocol_state (str): The current state of the issue credential protocol execution. Example: OfferPending.
         subject_id (Union[Unset, str]): The identifier (e.g DID) of the subject to which the verifiable credential will
@@ -48,7 +44,7 @@ class IssueCredentialRecord:
             did:prism:issuerofverifiablecredentials.
     """
 
-    claims: "IssueCredentialRecordClaims"
+    claims: Any
     record_id: str
     created_at: datetime.datetime
     role: str
@@ -62,8 +58,7 @@ class IssueCredentialRecord:
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        claims = self.claims.to_dict()
-
+        claims = self.claims
         record_id = self.record_id
         created_at = self.created_at.isoformat()
 
@@ -107,10 +102,8 @@ class IssueCredentialRecord:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        from ..models.issue_credential_record_claims import IssueCredentialRecordClaims
-
         d = src_dict.copy()
-        claims = IssueCredentialRecordClaims.from_dict(d.pop("claims"))
+        claims = d.pop("claims")
 
         record_id = d.pop("recordId")
 

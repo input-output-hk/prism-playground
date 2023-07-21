@@ -22,7 +22,11 @@ function getDockerHost() {
     local dockerHostAddress
     unset dockerHostAddress
     if [[ $(uname) == "Linux" ]] ; then
-      dockerHostAddress=$(docker run --rm --net=host eclipse/che-ip)
+      if [[ "$(< /proc/version)" == *@(Microsoft|WSL)* ]]; then
+        dockerHostAddress=host.docker.internal
+      else
+        dockerHostAddress=$(docker run --rm --net=host eclipse/che-ip)
+      fi
     else
       dockerHostAddress=host.docker.internal
     fi

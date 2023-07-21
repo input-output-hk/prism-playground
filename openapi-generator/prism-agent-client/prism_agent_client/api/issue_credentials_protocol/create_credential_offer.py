@@ -77,8 +77,9 @@ def sync_detailed(
 
     Args:
         json_body (CreateIssueCredentialRecordRequest):  Example: {'validityPeriod': 3600.0,
-            'issuingDID': 'did:prism:issuerofverifiablecredentials', 'claims': '(firstname,Alice)',
-            'connectionId': 'connectionId', 'automaticIssuance': True}.
+            'issuingDID': 'did:prism:issuerofverifiablecredentials', 'schemaId': 'https://agent-
+            host.com/prism-agent/schema-registry/schemas/d9569cec-c81e-4779-aa86-0d5994d82676',
+            'claims': '(firstname,Alice)', 'connectionId': 'connectionId', 'automaticIssuance': True}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -112,8 +113,9 @@ def sync(
 
     Args:
         json_body (CreateIssueCredentialRecordRequest):  Example: {'validityPeriod': 3600.0,
-            'issuingDID': 'did:prism:issuerofverifiablecredentials', 'claims': '(firstname,Alice)',
-            'connectionId': 'connectionId', 'automaticIssuance': True}.
+            'issuingDID': 'did:prism:issuerofverifiablecredentials', 'schemaId': 'https://agent-
+            host.com/prism-agent/schema-registry/schemas/d9569cec-c81e-4779-aa86-0d5994d82676',
+            'claims': '(firstname,Alice)', 'connectionId': 'connectionId', 'automaticIssuance': True}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -140,8 +142,9 @@ async def asyncio_detailed(
 
     Args:
         json_body (CreateIssueCredentialRecordRequest):  Example: {'validityPeriod': 3600.0,
-            'issuingDID': 'did:prism:issuerofverifiablecredentials', 'claims': '(firstname,Alice)',
-            'connectionId': 'connectionId', 'automaticIssuance': True}.
+            'issuingDID': 'did:prism:issuerofverifiablecredentials', 'schemaId': 'https://agent-
+            host.com/prism-agent/schema-registry/schemas/d9569cec-c81e-4779-aa86-0d5994d82676',
+            'claims': '(firstname,Alice)', 'connectionId': 'connectionId', 'automaticIssuance': True}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -173,8 +176,9 @@ async def asyncio(
 
     Args:
         json_body (CreateIssueCredentialRecordRequest):  Example: {'validityPeriod': 3600.0,
-            'issuingDID': 'did:prism:issuerofverifiablecredentials', 'claims': '(firstname,Alice)',
-            'connectionId': 'connectionId', 'automaticIssuance': True}.
+            'issuingDID': 'did:prism:issuerofverifiablecredentials', 'schemaId': 'https://agent-
+            host.com/prism-agent/schema-registry/schemas/d9569cec-c81e-4779-aa86-0d5994d82676',
+            'claims': '(firstname,Alice)', 'connectionId': 'connectionId', 'automaticIssuance': True}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

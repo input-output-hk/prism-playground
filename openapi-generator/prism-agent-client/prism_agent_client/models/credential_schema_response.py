@@ -17,13 +17,13 @@ T = TypeVar("T", bound="CredentialSchemaResponse")
 class CredentialSchemaResponse:
     """
     Example:
-        {'schema': {'$id': 'driving-license-1.0', '$schema': 'https://json-schema.org/draft/2020-12/schema',
-            'description': 'Driving License', 'type': 'object', 'properties': {'credentialSubject': {'type': 'object',
-            'properties': {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName': {'type': 'string'},
-            'familyName': {'type': 'string'}, 'dateOfIssuance': {'type': 'datetime'}, 'drivingLicenseID': {'type':
-            'string'}, 'drivingClass': {'type': 'integer'}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
-            'drivingLicenseID', 'drivingClass'], 'additionalProperties': True}}}}, 'authored': datetime.datetime(2022, 3,
-            10, 12, 0, tzinfo=datetime.timezone.utc), 'author':
+        {'schema': {'$id': 'https://example.com/driving-license-1.0', '$schema': 'https://json-
+            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object', 'properties':
+            {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName': {'type': 'string'}, 'familyName': {'type':
+            'string'}, 'dateOfIssuance': {'type': 'string', 'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'},
+            'drivingClass': {'type': 'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
+            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'authored': datetime.datetime(2022, 3, 10,
+            12, 0, tzinfo=datetime.timezone.utc), 'author':
             'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'kind': 'CredentialSchema',
             'description': 'Simple credential schema for the driving licence verifiable credential.', 'longId': 'did:prism:4
             a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff/0527aea1-d131-3948-a34d-
@@ -50,12 +50,12 @@ class CredentialSchemaResponse:
         type (str): This field resolves to a JSON schema with details about the schema metadata that applies to the
             schema. A piece of Metadata. Example: https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json.
         schema (Any): Valid JSON Schema where the Credential Schema data fields are defined. A piece of Metadata
-            Example: {'$id': 'driving-license-1.0', '$schema': 'https://json-schema.org/draft/2020-12/schema',
-            'description': 'Driving License', 'type': 'object', 'properties': {'credentialSubject': {'type': 'object',
-            'properties': {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName': {'type': 'string'},
-            'familyName': {'type': 'string'}, 'dateOfIssuance': {'type': 'datetime'}, 'drivingLicenseID': {'type':
-            'string'}, 'drivingClass': {'type': 'integer'}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
-            'drivingLicenseID', 'drivingClass'], 'additionalProperties': True}}}}.
+            Example: {'$id': 'https://example.com/driving-license-1.0', '$schema': 'https://json-
+            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object', 'properties':
+            {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName': {'type': 'string'}, 'familyName': {'type':
+            'string'}, 'dateOfIssuance': {'type': 'string', 'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'},
+            'drivingClass': {'type': 'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
+            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}.
         author (str): DID of the identity which authored the credential schema. A piece of Metadata. Example:
             did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff.
         authored (datetime.datetime): [RFC3339](https://www.rfc-editor.org/rfc/rfc3339) date on which the credential

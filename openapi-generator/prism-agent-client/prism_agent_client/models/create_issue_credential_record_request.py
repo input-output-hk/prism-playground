@@ -1,12 +1,8 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
+from typing import Any, Dict, List, Type, TypeVar, Union
 
 import attr
 
 from ..types import UNSET, Unset
-
-if TYPE_CHECKING:
-    from ..models.create_issue_credential_record_request_claims import CreateIssueCredentialRecordRequestClaims
-
 
 T = TypeVar("T", bound="CreateIssueCredentialRecordRequest")
 
@@ -15,36 +11,40 @@ T = TypeVar("T", bound="CreateIssueCredentialRecordRequest")
 class CreateIssueCredentialRecordRequest:
     """
     Example:
-        {'validityPeriod': 3600.0, 'issuingDID': 'did:prism:issuerofverifiablecredentials', 'claims':
+        {'validityPeriod': 3600.0, 'issuingDID': 'did:prism:issuerofverifiablecredentials', 'schemaId': 'https://agent-
+            host.com/prism-agent/schema-registry/schemas/d9569cec-c81e-4779-aa86-0d5994d82676', 'claims':
             '(firstname,Alice)', 'connectionId': 'connectionId', 'automaticIssuance': True}
 
     Attributes:
-        claims (CreateIssueCredentialRecordRequestClaims): The claims that will be associated with the issued verifiable
-            credential. Example: (firstname,Alice).
+        claims (Any): The claims that will be associated with the issued verifiable credential. Example:
+            (firstname,Alice).
         issuing_did (str): The issuer DID of the verifiable credential object. Example:
             did:prism:issuerofverifiablecredentials.
         connection_id (str): The unique identifier of a DIDComm connection that already exists between the issuer and
             the holder, and that will be used to execute the issue credential protocol.
         validity_period (Union[Unset, float]): The validity period in seconds of the verifiable credential that will be
             issued. Example: 3600.0.
+        schema_id (Union[Unset, str]): The unique identifier of the schema used for this credential offer. Example:
+            https://agent-host.com/prism-agent/schema-registry/schemas/d9569cec-c81e-4779-aa86-0d5994d82676.
         automatic_issuance (Union[Unset, bool]): Specifies whether or not the credential should be automatically
             generated and issued when receiving the `CredentialRequest` from the holder. If set to `false`, a manual
             approval by the issuer via API call will be required for the VC to be issued. Example: True.
     """
 
-    claims: "CreateIssueCredentialRecordRequestClaims"
+    claims: Any
     issuing_did: str
     connection_id: str
     validity_period: Union[Unset, float] = UNSET
+    schema_id: Union[Unset, str] = UNSET
     automatic_issuance: Union[Unset, bool] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        claims = self.claims.to_dict()
-
+        claims = self.claims
         issuing_did = self.issuing_did
         connection_id = self.connection_id
         validity_period = self.validity_period
+        schema_id = self.schema_id
         automatic_issuance = self.automatic_issuance
 
         field_dict: Dict[str, Any] = {}
@@ -58,6 +58,8 @@ class CreateIssueCredentialRecordRequest:
         )
         if validity_period is not UNSET:
             field_dict["validityPeriod"] = validity_period
+        if schema_id is not UNSET:
+            field_dict["schemaId"] = schema_id
         if automatic_issuance is not UNSET:
             field_dict["automaticIssuance"] = automatic_issuance
 
@@ -65,16 +67,16 @@ class CreateIssueCredentialRecordRequest:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        from ..models.create_issue_credential_record_request_claims import CreateIssueCredentialRecordRequestClaims
-
         d = src_dict.copy()
-        claims = CreateIssueCredentialRecordRequestClaims.from_dict(d.pop("claims"))
+        claims = d.pop("claims")
 
         issuing_did = d.pop("issuingDID")
 
         connection_id = d.pop("connectionId")
 
         validity_period = d.pop("validityPeriod", UNSET)
+
+        schema_id = d.pop("schemaId", UNSET)
 
         automatic_issuance = d.pop("automaticIssuance", UNSET)
 
@@ -83,6 +85,7 @@ class CreateIssueCredentialRecordRequest:
             issuing_did=issuing_did,
             connection_id=connection_id,
             validity_period=validity_period,
+            schema_id=schema_id,
             automatic_issuance=automatic_issuance,
         )
 

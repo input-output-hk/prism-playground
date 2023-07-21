@@ -4,6 +4,8 @@ set -e
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 
+export VAULT_DEV_ROOT_TOKEN_ID="root"
+
 Help() {
 	# Display Help
 	echo "Run an instance of the ATALA bulding-block stack locally"

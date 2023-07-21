@@ -45,6 +45,10 @@ def _parse_response(
         response_400 = ErrorResponse.from_dict(response.json())
 
         return response_400
+    if response.status_code == HTTPStatus.NOT_FOUND:
+        response_404 = ErrorResponse.from_dict(response.json())
+
+        return response_404
     if response.status_code == HTTPStatus.INTERNAL_SERVER_ERROR:
         response_500 = ErrorResponse.from_dict(response.json())
 
@@ -78,14 +82,14 @@ def sync_detailed(
     corresponds to it.
 
     Args:
-        json_body (CredentialSchemaInput):  Example: {'schema': {'$id': 'driving-license-1.0',
-            '$schema': 'https://json-schema.org/draft/2020-12/schema', 'description': 'Driving
-            License', 'type': 'object', 'properties': {'credentialSubject': {'type': 'object',
+        json_body (CredentialSchemaInput):  Example: {'schema': {'$id':
+            'https://example.com/driving-license-1.0', '$schema': 'https://json-
+            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object',
             'properties': {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName':
-            {'type': 'string'}, 'familyName': {'type': 'string'}, 'dateOfIssuance': {'type':
-            'datetime'}, 'drivingLicenseID': {'type': 'string'}, 'drivingClass': {'type': 'integer'},
-            'required': ['emailAddress', 'familyName', 'dateOfIssuance', 'drivingLicenseID',
-            'drivingClass'], 'additionalProperties': True}}}}, 'author':
+            {'type': 'string'}, 'familyName': {'type': 'string'}, 'dateOfIssuance': {'type': 'string',
+            'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'}, 'drivingClass': {'type':
+            'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
+            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'author':
             'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name':
             'DrivingLicense', 'description': 'Simple credential schema for the driving licence
             verifiable credential.', 'type': 'https://w3c-ccg.github.io/vc-json-
@@ -124,14 +128,14 @@ def sync(
     corresponds to it.
 
     Args:
-        json_body (CredentialSchemaInput):  Example: {'schema': {'$id': 'driving-license-1.0',
-            '$schema': 'https://json-schema.org/draft/2020-12/schema', 'description': 'Driving
-            License', 'type': 'object', 'properties': {'credentialSubject': {'type': 'object',
+        json_body (CredentialSchemaInput):  Example: {'schema': {'$id':
+            'https://example.com/driving-license-1.0', '$schema': 'https://json-
+            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object',
             'properties': {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName':
-            {'type': 'string'}, 'familyName': {'type': 'string'}, 'dateOfIssuance': {'type':
-            'datetime'}, 'drivingLicenseID': {'type': 'string'}, 'drivingClass': {'type': 'integer'},
-            'required': ['emailAddress', 'familyName', 'dateOfIssuance', 'drivingLicenseID',
-            'drivingClass'], 'additionalProperties': True}}}}, 'author':
+            {'type': 'string'}, 'familyName': {'type': 'string'}, 'dateOfIssuance': {'type': 'string',
+            'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'}, 'drivingClass': {'type':
+            'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
+            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'author':
             'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name':
             'DrivingLicense', 'description': 'Simple credential schema for the driving licence
             verifiable credential.', 'type': 'https://w3c-ccg.github.io/vc-json-
@@ -163,14 +167,14 @@ async def asyncio_detailed(
     corresponds to it.
 
     Args:
-        json_body (CredentialSchemaInput):  Example: {'schema': {'$id': 'driving-license-1.0',
-            '$schema': 'https://json-schema.org/draft/2020-12/schema', 'description': 'Driving
-            License', 'type': 'object', 'properties': {'credentialSubject': {'type': 'object',
+        json_body (CredentialSchemaInput):  Example: {'schema': {'$id':
+            'https://example.com/driving-license-1.0', '$schema': 'https://json-
+            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object',
             'properties': {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName':
-            {'type': 'string'}, 'familyName': {'type': 'string'}, 'dateOfIssuance': {'type':
-            'datetime'}, 'drivingLicenseID': {'type': 'string'}, 'drivingClass': {'type': 'integer'},
-            'required': ['emailAddress', 'familyName', 'dateOfIssuance', 'drivingLicenseID',
-            'drivingClass'], 'additionalProperties': True}}}}, 'author':
+            {'type': 'string'}, 'familyName': {'type': 'string'}, 'dateOfIssuance': {'type': 'string',
+            'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'}, 'drivingClass': {'type':
+            'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
+            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'author':
             'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name':
             'DrivingLicense', 'description': 'Simple credential schema for the driving licence
             verifiable credential.', 'type': 'https://w3c-ccg.github.io/vc-json-
@@ -207,14 +211,14 @@ async def asyncio(
     corresponds to it.
 
     Args:
-        json_body (CredentialSchemaInput):  Example: {'schema': {'$id': 'driving-license-1.0',
-            '$schema': 'https://json-schema.org/draft/2020-12/schema', 'description': 'Driving
-            License', 'type': 'object', 'properties': {'credentialSubject': {'type': 'object',
+        json_body (CredentialSchemaInput):  Example: {'schema': {'$id':
+            'https://example.com/driving-license-1.0', '$schema': 'https://json-
+            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object',
             'properties': {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName':
-            {'type': 'string'}, 'familyName': {'type': 'string'}, 'dateOfIssuance': {'type':
-            'datetime'}, 'drivingLicenseID': {'type': 'string'}, 'drivingClass': {'type': 'integer'},
-            'required': ['emailAddress', 'familyName', 'dateOfIssuance', 'drivingLicenseID',
-            'drivingClass'], 'additionalProperties': True}}}}, 'author':
+            {'type': 'string'}, 'familyName': {'type': 'string'}, 'dateOfIssuance': {'type': 'string',
+            'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'}, 'drivingClass': {'type':
+            'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
+            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'author':
             'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name':
             'DrivingLicense', 'description': 'Simple credential schema for the driving licence
             verifiable credential.', 'type': 'https://w3c-ccg.github.io/vc-json-

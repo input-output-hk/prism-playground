@@ -37,7 +37,6 @@ export interface CreateVerificationPolicyRequest {
 
 export interface DeleteVerificationPolicyByIdRequest {
     id: string;
-    nonce: number;
 }
 
 export interface GetVerificationPolicyByIdRequest {
@@ -106,16 +105,7 @@ export class VerificationApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling deleteVerificationPolicyById.');
         }
 
-        if (requestParameters.nonce === null || requestParameters.nonce === undefined) {
-            throw new runtime.RequiredError('nonce','Required parameter requestParameters.nonce was null or undefined when calling deleteVerificationPolicyById.');
-        }
-
         const queryParameters: any = {};
-
-        if (requestParameters.nonce !== undefined) {
-            queryParameters['nonce'] = requestParameters.nonce;
-        }
-
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({

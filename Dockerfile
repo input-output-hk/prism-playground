@@ -1,5 +1,5 @@
 # Use the miminal-notebook as base container
-ARG BASE_CONTAINER=jupyter/minimal-notebook
+ARG BASE_CONTAINER=jupyter/minimal-notebook:2023-07-17
 FROM $BASE_CONTAINER
 
 USER root

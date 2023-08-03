@@ -1,4 +1,4 @@
-from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union
+from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 
 import attr
 
@@ -17,17 +17,19 @@ class CreateManagedDidRequestDocumentTemplate:
     """
     Example:
         {'publicKeys': [{'purpose': 'authentication', 'id': 'key-1'}, {'purpose': 'authentication', 'id': 'key-1'}],
-            'services': [{'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}, {'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}]}
+            'services': [{'id': 'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'Single(LinkedDomains)'},
+            {'id': 'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'Single(LinkedDomains)'}], 'contexts':
+            ['contexts', 'contexts']}
 
     Attributes:
         public_keys (Union[Unset, List['ManagedDIDKeyTemplate']]):
         services (Union[Unset, List['Service']]):
+        contexts (Union[Unset, List[str]]):
     """
 
     public_keys: Union[Unset, List["ManagedDIDKeyTemplate"]] = UNSET
     services: Union[Unset, List["Service"]] = UNSET
+    contexts: Union[Unset, List[str]] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -47,6 +49,10 @@ class CreateManagedDidRequestDocumentTemplate:
 
                 services.append(services_item)
 
+        contexts: Union[Unset, List[str]] = UNSET
+        if not isinstance(self.contexts, Unset):
+            contexts = self.contexts
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({})
@@ -54,6 +60,8 @@ class CreateManagedDidRequestDocumentTemplate:
             field_dict["publicKeys"] = public_keys
         if services is not UNSET:
             field_dict["services"] = services
+        if contexts is not UNSET:
+            field_dict["contexts"] = contexts
 
         return field_dict
 
@@ -77,9 +85,12 @@ class CreateManagedDidRequestDocumentTemplate:
 
             services.append(services_item)
 
+        contexts = cast(List[str], d.pop("contexts", UNSET))
+
         create_managed_did_request_document_template = cls(
             public_keys=public_keys,
             services=services,
+            contexts=contexts,
         )
 
         create_managed_did_request_document_template.additional_properties = d

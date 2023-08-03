@@ -10,14 +10,11 @@ T = TypeVar("T", bound="ProofRequestAux")
 @attr.s(auto_attribs=True)
 class ProofRequestAux:
     """
-    Example:
-        {'schemaId': 'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']}
-
     Attributes:
         schema_id (str): The unique identifier of a schema the VC should comply with. Example:
             https://schema.org/Person.
         trust_issuers (Union[Unset, List[str]]): One or more issuers that are trusted by the verifier emitting the proof
-            presentation request.
+            presentation request. Example: ['did:web:atalaprism.io/users/testUser', 'did.prism:123', 'did:prism:...'].
     """
 
     schema_id: str

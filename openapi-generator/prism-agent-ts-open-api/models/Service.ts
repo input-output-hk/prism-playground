@@ -13,6 +13,19 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { Json } from './Json';
+import {
+    JsonFromJSON,
+    JsonFromJSONTyped,
+    JsonToJSON,
+} from './Json';
+import type { ServiceType } from './ServiceType';
+import {
+    ServiceTypeFromJSON,
+    ServiceTypeFromJSONTyped,
+    ServiceTypeToJSON,
+} from './ServiceType';
+
 /**
  * A service expressed in the DID document. https://www.w3.org/TR/did-core/#services
  * @export
@@ -28,17 +41,17 @@ export interface Service {
      */
     id: string;
     /**
-     * Service type. Can contain multiple possible values as described in the [Create DID operation](https://github.com/input-output-hk/prism-did-method-spec/blob/main/w3c-spec/PRISM-method.md#create-did) under the construction section.
-     * @type {string}
+     * 
+     * @type {ServiceType}
      * @memberof Service
      */
-    type: string;
+    type: ServiceType;
     /**
-     * The service endpoint. Can contain multiple possible values as described in the [Create DID operation]
-     * @type {Array<string>}
+     * 
+     * @type {Json}
      * @memberof Service
      */
-    serviceEndpoint: Array<string>;
+    serviceEndpoint: Json;
 }
 
 /**
@@ -64,8 +77,8 @@ export function ServiceFromJSONTyped(json: any, ignoreDiscriminator: boolean): S
     return {
         
         'id': json['id'],
-        'type': json['type'],
-        'serviceEndpoint': json['serviceEndpoint'],
+        'type': ServiceTypeFromJSON(json['type']),
+        'serviceEndpoint': JsonFromJSON(json['serviceEndpoint']),
     };
 }
 
@@ -79,8 +92,8 @@ export function ServiceToJSON(value?: Service | null): any {
     return {
         
         'id': value.id,
-        'type': value.type,
-        'serviceEndpoint': value.serviceEndpoint,
+        'type': ServiceTypeToJSON(value.type),
+        'serviceEndpoint': JsonToJSON(value.serviceEndpoint),
     };
 }
 

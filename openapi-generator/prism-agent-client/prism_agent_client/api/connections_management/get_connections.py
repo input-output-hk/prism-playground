@@ -15,6 +15,7 @@ def _get_kwargs(
     client: Client,
     offset: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
+    thid: Union[Unset, None, str] = UNSET,
 ) -> Dict[str, Any]:
     url = "{}/connections".format(client.base_url)
 
@@ -25,6 +26,8 @@ def _get_kwargs(
     params["offset"] = offset
 
     params["limit"] = limit
+
+    params["thid"] = thid
 
     params = {k: v for k, v in params.items() if v is not UNSET and v is not None}
 
@@ -72,6 +75,7 @@ def sync_detailed(
     client: Client,
     offset: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
+    thid: Union[Unset, None, str] = UNSET,
 ) -> Response[Union[ConnectionsPage, ErrorResponse]]:
     """Gets the list of connection records.
 
@@ -80,6 +84,7 @@ def sync_detailed(
     Args:
         offset (Union[Unset, None, int]):
         limit (Union[Unset, None, int]):
+        thid (Union[Unset, None, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -93,6 +98,7 @@ def sync_detailed(
         client=client,
         offset=offset,
         limit=limit,
+        thid=thid,
     )
 
     response = httpx.request(
@@ -108,6 +114,7 @@ def sync(
     client: Client,
     offset: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
+    thid: Union[Unset, None, str] = UNSET,
 ) -> Optional[Union[ConnectionsPage, ErrorResponse]]:
     """Gets the list of connection records.
 
@@ -116,6 +123,7 @@ def sync(
     Args:
         offset (Union[Unset, None, int]):
         limit (Union[Unset, None, int]):
+        thid (Union[Unset, None, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -129,6 +137,7 @@ def sync(
         client=client,
         offset=offset,
         limit=limit,
+        thid=thid,
     ).parsed
 
 
@@ -137,6 +146,7 @@ async def asyncio_detailed(
     client: Client,
     offset: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
+    thid: Union[Unset, None, str] = UNSET,
 ) -> Response[Union[ConnectionsPage, ErrorResponse]]:
     """Gets the list of connection records.
 
@@ -145,6 +155,7 @@ async def asyncio_detailed(
     Args:
         offset (Union[Unset, None, int]):
         limit (Union[Unset, None, int]):
+        thid (Union[Unset, None, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -158,6 +169,7 @@ async def asyncio_detailed(
         client=client,
         offset=offset,
         limit=limit,
+        thid=thid,
     )
 
     async with httpx.AsyncClient(verify=client.verify_ssl) as _client:
@@ -171,6 +183,7 @@ async def asyncio(
     client: Client,
     offset: Union[Unset, None, int] = UNSET,
     limit: Union[Unset, None, int] = UNSET,
+    thid: Union[Unset, None, str] = UNSET,
 ) -> Optional[Union[ConnectionsPage, ErrorResponse]]:
     """Gets the list of connection records.
 
@@ -179,6 +192,7 @@ async def asyncio(
     Args:
         offset (Union[Unset, None, int]):
         limit (Union[Unset, None, int]):
+        thid (Union[Unset, None, str]):
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -193,5 +207,6 @@ async def asyncio(
             client=client,
             offset=offset,
             limit=limit,
+            thid=thid,
         )
     ).parsed

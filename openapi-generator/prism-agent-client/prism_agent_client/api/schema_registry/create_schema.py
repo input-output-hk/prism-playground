@@ -93,7 +93,8 @@ def sync_detailed(
             'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name':
             'DrivingLicense', 'description': 'Simple credential schema for the driving licence
             verifiable credential.', 'type': 'https://w3c-ccg.github.io/vc-json-
-            schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['tags', 'tags']}.
+            schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['driving', 'licence',
+            'id']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -139,7 +140,8 @@ def sync(
             'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name':
             'DrivingLicense', 'description': 'Simple credential schema for the driving licence
             verifiable credential.', 'type': 'https://w3c-ccg.github.io/vc-json-
-            schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['tags', 'tags']}.
+            schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['driving', 'licence',
+            'id']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -178,7 +180,8 @@ async def asyncio_detailed(
             'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name':
             'DrivingLicense', 'description': 'Simple credential schema for the driving licence
             verifiable credential.', 'type': 'https://w3c-ccg.github.io/vc-json-
-            schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['tags', 'tags']}.
+            schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['driving', 'licence',
+            'id']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -222,7 +225,8 @@ async def asyncio(
             'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name':
             'DrivingLicense', 'description': 'Simple credential schema for the driving licence
             verifiable credential.', 'type': 'https://w3c-ccg.github.io/vc-json-
-            schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['tags', 'tags']}.
+            schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['driving', 'licence',
+            'id']}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

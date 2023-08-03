@@ -13,20 +13,22 @@ T = TypeVar("T", bound="IssueCredentialRecord")
 class IssueCredentialRecord:
     """
     Example:
-        {'validityPeriod': 3600.0, 'recordId': '80d612dc-0ded-4ac9-90b4-1b8eabb04545', 'createdAt':
-            datetime.datetime(2023, 7, 17, 22, 24, 0, 115325, tzinfo=datetime.timezone.utc), 'issuingDID':
+        {'recordId': '80d612dc-0ded-4ac9-90b4-1b8eabb04545', 'validityPeriod': 3600.0, 'createdAt':
+            datetime.datetime(2023, 8, 1, 17, 8, 48, 883548, tzinfo=datetime.timezone.utc), 'issuingDID':
             'did:prism:issuerofverifiablecredentials', 'role': 'Issuer', 'jwtCredential': 'jwtCredential', 'claims':
-            '(firstname,Alice)', 'automaticIssuance': True, 'subjectId': 'did:prism:subjectofverifiablecredentials',
-            'updatedAt': datetime.datetime(2000, 1, 23, 4, 56, 7, tzinfo=datetime.timezone.utc), 'protocolState':
-            'OfferPending'}
+            '(firstname,Alice)', 'thid': '0527aea1-d131-3948-a34d-03af39aba8b4', 'automaticIssuance': True, 'subjectId':
+            'did:prism:subjectofverifiablecredentials', 'updatedAt': datetime.datetime(2000, 1, 23, 4, 56, 7,
+            tzinfo=datetime.timezone.utc), 'protocolState': 'OfferPending'}
 
     Attributes:
-        claims (Any): The claims that will be associated with the issued verifiable credential. Example:
-            (firstname,Alice).
         record_id (str): The unique identifier of the issue credential record. Example:
             80d612dc-0ded-4ac9-90b4-1b8eabb04545.
+        thid (str): The unique identifier of the thread this credential record belongs to. The value will identical on
+            both sides of the issue flow (issuer and holder) Example: 0527aea1-d131-3948-a34d-03af39aba8b4.
+        claims (Any): The claims that will be associated with the issued verifiable credential. Example:
+            (firstname,Alice).
         created_at (datetime.datetime): The date and time when the issue credential record was created. Example:
-            2023-07-17 22:24:00.115325+00:00.
+            2023-08-01 17:08:48.883548+00:00.
         role (str): The role played by the Prism agent in the credential issuance flow. Example: Issuer.
         protocol_state (str): The current state of the issue credential protocol execution. Example: OfferPending.
         subject_id (Union[Unset, str]): The identifier (e.g DID) of the subject to which the verifiable credential will
@@ -44,8 +46,9 @@ class IssueCredentialRecord:
             did:prism:issuerofverifiablecredentials.
     """
 
-    claims: Any
     record_id: str
+    thid: str
+    claims: Any
     created_at: datetime.datetime
     role: str
     protocol_state: str
@@ -58,8 +61,9 @@ class IssueCredentialRecord:
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
-        claims = self.claims
         record_id = self.record_id
+        thid = self.thid
+        claims = self.claims
         created_at = self.created_at.isoformat()
 
         role = self.role
@@ -78,8 +82,9 @@ class IssueCredentialRecord:
         field_dict.update(self.additional_properties)
         field_dict.update(
             {
-                "claims": claims,
                 "recordId": record_id,
+                "thid": thid,
+                "claims": claims,
                 "createdAt": created_at,
                 "role": role,
                 "protocolState": protocol_state,
@@ -103,9 +108,11 @@ class IssueCredentialRecord:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy()
-        claims = d.pop("claims")
-
         record_id = d.pop("recordId")
+
+        thid = d.pop("thid")
+
+        claims = d.pop("claims")
 
         created_at = isoparse(d.pop("createdAt"))
 
@@ -131,8 +138,9 @@ class IssueCredentialRecord:
         issuing_did = d.pop("issuingDID", UNSET)
 
         issue_credential_record = cls(
-            claims=claims,
             record_id=record_id,
+            thid=thid,
+            claims=claims,
             created_at=created_at,
             role=role,
             protocol_state=protocol_state,

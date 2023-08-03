@@ -20,6 +20,18 @@ import { exists, mapValues } from '../runtime';
  */
 export interface IssueCredentialRecord {
     /**
+     * The unique identifier of the issue credential record.
+     * @type {string}
+     * @memberof IssueCredentialRecord
+     */
+    recordId: string;
+    /**
+     * The unique identifier of the thread this credential record belongs to. The value will identical on both sides of the issue flow (issuer and holder)
+     * @type {string}
+     * @memberof IssueCredentialRecord
+     */
+    thid: string;
+    /**
      * The identifier (e.g DID) of the subject to which the verifiable credential will be issued.
      * @type {string}
      * @memberof IssueCredentialRecord
@@ -43,12 +55,6 @@ export interface IssueCredentialRecord {
      * @memberof IssueCredentialRecord
      */
     automaticIssuance?: boolean;
-    /**
-     * The unique identifier of the issue credential record.
-     * @type {string}
-     * @memberof IssueCredentialRecord
-     */
-    recordId: string;
     /**
      * The date and time when the issue credential record was created.
      * @type {Date}
@@ -92,8 +98,9 @@ export interface IssueCredentialRecord {
  */
 export function instanceOfIssueCredentialRecord(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "claims" in value;
     isInstance = isInstance && "recordId" in value;
+    isInstance = isInstance && "thid" in value;
+    isInstance = isInstance && "claims" in value;
     isInstance = isInstance && "createdAt" in value;
     isInstance = isInstance && "role" in value;
     isInstance = isInstance && "protocolState" in value;
@@ -111,11 +118,12 @@ export function IssueCredentialRecordFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
+        'recordId': json['recordId'],
+        'thid': json['thid'],
         'subjectId': !exists(json, 'subjectId') ? undefined : json['subjectId'],
         'validityPeriod': !exists(json, 'validityPeriod') ? undefined : json['validityPeriod'],
         'claims': json['claims'],
         'automaticIssuance': !exists(json, 'automaticIssuance') ? undefined : json['automaticIssuance'],
-        'recordId': json['recordId'],
         'createdAt': (new Date(json['createdAt'])),
         'updatedAt': !exists(json, 'updatedAt') ? undefined : (new Date(json['updatedAt'])),
         'role': json['role'],
@@ -134,11 +142,12 @@ export function IssueCredentialRecordToJSON(value?: IssueCredentialRecord | null
     }
     return {
         
+        'recordId': value.recordId,
+        'thid': value.thid,
         'subjectId': value.subjectId,
         'validityPeriod': value.validityPeriod,
         'claims': value.claims,
         'automaticIssuance': value.automaticIssuance,
-        'recordId': value.recordId,
         'createdAt': (value.createdAt.toISOString()),
         'updatedAt': value.updatedAt === undefined ? undefined : (value.updatedAt.toISOString()),
         'role': value.role,

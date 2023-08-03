@@ -7,6 +7,7 @@ from ..types import UNSET, Unset
 
 if TYPE_CHECKING:
     from ..models.managed_did_key_template import ManagedDIDKeyTemplate
+    from ..models.patch_context_action import PatchContextAction
     from ..models.remove_entry_by_id import RemoveEntryById
     from ..models.service import Service
     from ..models.update_managed_did_service_action import UpdateManagedDIDServiceAction
@@ -18,14 +19,14 @@ T = TypeVar("T", bound="UpdateManagedDIDRequestAction")
 @attr.s(auto_attribs=True)
 class UpdateManagedDIDRequestAction:
     """A list of actions to perform on DID document.
-    The field `addKey`, `removeKey`, `addService`, `removeService`, `updateService` must corresponds to
+    The field `addKey`, `removeKey`, `addService`, `removeService`, `updateService`, `patchContext` must corresponds to
     the `actionType` specified. For example, `addKey` must be present when `actionType` is `ADD_KEY`.
 
         Example:
             {'actionType': None, 'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id': 'service-1',
-                'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'updateService': {'id':
-                'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'addKey':
-                {'purpose': 'authentication', 'id': 'key-1'}}
+                'serviceEndpoint': 'https://example.com', 'type': 'Single(LinkedDomains)'}, 'updateService': {'id': 'service-1',
+                'serviceEndpoint': 'https://example.com', 'type': 'LinkedDomains'}, 'addKey': {'purpose': 'authentication',
+                'id': 'key-1'}, 'patchContext': {'contexts': ['contexts', 'contexts']}}
 
         Attributes:
             action_type (ActionType):
@@ -33,12 +34,13 @@ class UpdateManagedDIDRequestAction:
                 'authentication', 'id': 'key-1'}.
             remove_key (Union[Unset, RemoveEntryById]):  Example: {'id': 'id'}.
             add_service (Union[Unset, Service]): A service expressed in the DID document. https://www.w3.org/TR/did-
-                core/#services Example: {'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-                'LinkedDomains'}.
+                core/#services Example: {'id': 'service-1', 'serviceEndpoint': 'https://example.com', 'type':
+                'Single(LinkedDomains)'}.
             remove_service (Union[Unset, RemoveEntryById]):  Example: {'id': 'id'}.
             update_service (Union[Unset, UpdateManagedDIDServiceAction]): A patch to existing Service. 'type' and
-                'serviceEndpoint' cannot both be empty. Example: {'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint',
-                'serviceEndpoint'], 'type': 'LinkedDomains'}.
+                'serviceEndpoint' cannot both be empty. Example: {'id': 'service-1', 'serviceEndpoint': 'https://example.com',
+                'type': 'LinkedDomains'}.
+            patch_context (Union[Unset, PatchContextAction]):  Example: {'contexts': ['contexts', 'contexts']}.
     """
 
     action_type: ActionType
@@ -47,6 +49,7 @@ class UpdateManagedDIDRequestAction:
     add_service: Union[Unset, "Service"] = UNSET
     remove_service: Union[Unset, "RemoveEntryById"] = UNSET
     update_service: Union[Unset, "UpdateManagedDIDServiceAction"] = UNSET
+    patch_context: Union[Unset, "PatchContextAction"] = UNSET
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,6 +75,10 @@ class UpdateManagedDIDRequestAction:
         if not isinstance(self.update_service, Unset):
             update_service = self.update_service.to_dict()
 
+        patch_context: Union[Unset, Dict[str, Any]] = UNSET
+        if not isinstance(self.patch_context, Unset):
+            patch_context = self.patch_context.to_dict()
+
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update(
@@ -89,12 +96,15 @@ class UpdateManagedDIDRequestAction:
             field_dict["removeService"] = remove_service
         if update_service is not UNSET:
             field_dict["updateService"] = update_service
+        if patch_context is not UNSET:
+            field_dict["patchContext"] = patch_context
 
         return field_dict
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         from ..models.managed_did_key_template import ManagedDIDKeyTemplate
+        from ..models.patch_context_action import PatchContextAction
         from ..models.remove_entry_by_id import RemoveEntryById
         from ..models.service import Service
         from ..models.update_managed_did_service_action import UpdateManagedDIDServiceAction
@@ -137,6 +147,13 @@ class UpdateManagedDIDRequestAction:
         else:
             update_service = UpdateManagedDIDServiceAction.from_dict(_update_service)
 
+        _patch_context = d.pop("patchContext", UNSET)
+        patch_context: Union[Unset, PatchContextAction]
+        if isinstance(_patch_context, Unset):
+            patch_context = UNSET
+        else:
+            patch_context = PatchContextAction.from_dict(_patch_context)
+
         update_managed_did_request_action = cls(
             action_type=action_type,
             add_key=add_key,
@@ -144,6 +161,7 @@ class UpdateManagedDIDRequestAction:
             add_service=add_service,
             remove_service=remove_service,
             update_service=update_service,
+            patch_context=patch_context,
         )
 
         update_managed_did_request_action.additional_properties = d

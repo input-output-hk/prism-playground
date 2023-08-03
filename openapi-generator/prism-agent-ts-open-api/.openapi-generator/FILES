@@ -12,6 +12,8 @@ index.ts
 models/AcceptConnectionInvitationRequest.ts
 models/AcceptCredentialOfferRequest.ts
 models/ActionType.ts
+models/Arr.ts
+models/Bool.ts
 models/Connection.ts
 models/ConnectionInvitation.ts
 models/ConnectionsPage.ts
@@ -33,10 +35,13 @@ models/ErrorResponse.ts
 models/HealthInfo.ts
 models/IssueCredentialRecord.ts
 models/IssueCredentialRecordPage.ts
+models/Json.ts
 models/ManagedDID.ts
 models/ManagedDIDKeyTemplate.ts
 models/ManagedDIDPage.ts
+models/Num.ts
 models/Options.ts
+models/PatchContextAction.ts
 models/PresentationStatus.ts
 models/PresentationStatusPage.ts
 models/Proof.ts
@@ -48,9 +53,12 @@ models/RequestPresentationAction.ts
 models/RequestPresentationInput.ts
 models/RequestPresentationOutput.ts
 models/Service.ts
+models/ServiceType.ts
+models/Str.ts
 models/UpdateManagedDIDRequest.ts
 models/UpdateManagedDIDRequestAction.ts
 models/UpdateManagedDIDServiceAction.ts
+models/UpdateManagedDIDServiceActionType.ts
 models/VerificationMethod.ts
 models/VerificationPolicy.ts
 models/VerificationPolicyConstraint.ts

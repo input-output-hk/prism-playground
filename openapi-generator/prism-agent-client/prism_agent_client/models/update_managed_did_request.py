@@ -16,13 +16,13 @@ class UpdateManagedDIDRequest:
     """
     Example:
         {'actions': [{'actionType': None, 'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'},
-            'updateService': {'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}}, {'actionType': None, 'removeKey':
-            {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'updateService': {'id': 'service-1',
-            'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'addKey': {'purpose':
-            'authentication', 'id': 'key-1'}}]}
+            'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'Single(LinkedDomains)'}, 'updateService': {'id':
+            'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'LinkedDomains'}, 'addKey': {'purpose':
+            'authentication', 'id': 'key-1'}, 'patchContext': {'contexts': ['contexts', 'contexts']}}, {'actionType': None,
+            'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id': 'service-1', 'serviceEndpoint':
+            'https://example.com', 'type': 'Single(LinkedDomains)'}, 'updateService': {'id': 'service-1', 'serviceEndpoint':
+            'https://example.com', 'type': 'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'},
+            'patchContext': {'contexts': ['contexts', 'contexts']}}]}
 
     Attributes:
         actions (Union[Unset, List['UpdateManagedDIDRequestAction']]):

@@ -49,6 +49,7 @@ export interface GetConnectionRequest {
 export interface GetConnectionsRequest {
     offset?: number;
     limit?: number;
+    thid?: string;
 }
 
 /**
@@ -171,6 +172,10 @@ export class ConnectionsManagementApi extends runtime.BaseAPI {
 
         if (requestParameters.limit !== undefined) {
             queryParameters['limit'] = requestParameters.limit;
+        }
+
+        if (requestParameters.thid !== undefined) {
+            queryParameters['thid'] = requestParameters.thid;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

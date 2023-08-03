@@ -16,14 +16,15 @@ T = TypeVar("T", bound="PresentationStatus")
 class PresentationStatus:
     """
     Example:
-        {'presentationId': '3c6d9fa5-d277-431e-a6cb-d3956e47e610', 'data': ['data', 'data'], 'proofs': [{'schemaId':
-            'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']}, {'schemaId':
-            'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']}], 'connectionId':
-            'bc528dc8-69f1-4c5a-a508-5f8019047900', 'status': 'RequestPending'}
+        {'presentationId': '3c6d9fa5-d277-431e-a6cb-d3956e47e610', 'data': [], 'proofs': [], 'thid':
+            '0527aea1-d131-3948-a34d-03af39aba8b4', 'connectionId': 'bc528dc8-69f1-4c5a-a508-5f8019047900', 'status':
+            'RequestPending'}
 
     Attributes:
         presentation_id (str): The unique identifier of the presentation record. Example:
             3c6d9fa5-d277-431e-a6cb-d3956e47e610.
+        thid (str): The unique identifier of the thread this presentation record belongs to. The value will identical on
+            both sides of the presentation flow (verifier and prover) Example: 0527aea1-d131-3948-a34d-03af39aba8b4.
         status (PresentationStatusStatus): The current state of the proof presentation record. Example: RequestPending.
         proofs (Union[Unset, List['ProofRequestAux']]): The type of proofs requested in the context of this proof
             presentation request (e.g., VC schema, trusted issuers, etc.)
@@ -33,6 +34,7 @@ class PresentationStatus:
     """
 
     presentation_id: str
+    thid: str
     status: PresentationStatusStatus
     proofs: Union[Unset, List["ProofRequestAux"]] = UNSET
     data: Union[Unset, List[str]] = UNSET
@@ -41,6 +43,7 @@ class PresentationStatus:
 
     def to_dict(self) -> Dict[str, Any]:
         presentation_id = self.presentation_id
+        thid = self.thid
         status = self.status.value
 
         proofs: Union[Unset, List[Dict[str, Any]]] = UNSET
@@ -62,6 +65,7 @@ class PresentationStatus:
         field_dict.update(
             {
                 "presentationId": presentation_id,
+                "thid": thid,
                 "status": status,
             }
         )
@@ -81,6 +85,8 @@ class PresentationStatus:
         d = src_dict.copy()
         presentation_id = d.pop("presentationId")
 
+        thid = d.pop("thid")
+
         status = PresentationStatusStatus(d.pop("status"))
 
         proofs = []
@@ -96,6 +102,7 @@ class PresentationStatus:
 
         presentation_status = cls(
             presentation_id=presentation_id,
+            thid=thid,
             status=status,
             proofs=proofs,
             data=data,

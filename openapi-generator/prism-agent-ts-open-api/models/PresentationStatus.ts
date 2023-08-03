@@ -33,6 +33,12 @@ export interface PresentationStatus {
      */
     presentationId: string;
     /**
+     * The unique identifier of the thread this presentation record belongs to. The value will identical on both sides of the presentation flow (verifier and prover)
+     * @type {string}
+     * @memberof PresentationStatus
+     */
+    thid: string;
+    /**
      * The current state of the proof presentation record.
      * @type {string}
      * @memberof PresentationStatus
@@ -87,6 +93,7 @@ export type PresentationStatusStatusEnum = typeof PresentationStatusStatusEnum[k
 export function instanceOfPresentationStatus(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "presentationId" in value;
+    isInstance = isInstance && "thid" in value;
     isInstance = isInstance && "status" in value;
 
     return isInstance;
@@ -103,6 +110,7 @@ export function PresentationStatusFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
         
         'presentationId': json['presentationId'],
+        'thid': json['thid'],
         'status': json['status'],
         'proofs': !exists(json, 'proofs') ? undefined : ((json['proofs'] as Array<any>).map(ProofRequestAuxFromJSON)),
         'data': !exists(json, 'data') ? undefined : json['data'],
@@ -120,6 +128,7 @@ export function PresentationStatusToJSON(value?: PresentationStatus | null): any
     return {
         
         'presentationId': value.presentationId,
+        'thid': value.thid,
         'status': value.status,
         'proofs': value.proofs === undefined ? undefined : ((value.proofs as Array<any>).map(ProofRequestAuxToJSON)),
         'data': value.data,

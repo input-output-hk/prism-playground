@@ -34,6 +34,25 @@ export interface DIDDocumentMetadata {
      * @memberof DIDDocumentMetadata
      */
     canonicalId?: string;
+    /**
+     * 
+     * DID document metadata MUST contain a versionId property with the hash of the AtalaOperation contained in the latest valid SignedAtalaOperation that created the DID or changed the DID's internal state.
+     * @type {string}
+     * @memberof DIDDocumentMetadata
+     */
+    versionId?: string;
+    /**
+     * The timestamp of the Cardano block that contained the first valid SignedAtalaOperation with a CreateDIDOperation that created the DID.
+     * @type {string}
+     * @memberof DIDDocumentMetadata
+     */
+    created?: string;
+    /**
+     * The timestamp of the Cardano block that contained the latest valid SignedAtalaOperation that changed the DID's internal state.
+     * @type {string}
+     * @memberof DIDDocumentMetadata
+     */
+    updated?: string;
 }
 
 /**
@@ -57,6 +76,9 @@ export function DIDDocumentMetadataFromJSONTyped(json: any, ignoreDiscriminator:
         
         'deactivated': !exists(json, 'deactivated') ? undefined : json['deactivated'],
         'canonicalId': !exists(json, 'canonicalId') ? undefined : json['canonicalId'],
+        'versionId': !exists(json, 'versionId') ? undefined : json['versionId'],
+        'created': !exists(json, 'created') ? undefined : json['created'],
+        'updated': !exists(json, 'updated') ? undefined : json['updated'],
     };
 }
 
@@ -71,6 +93,9 @@ export function DIDDocumentMetadataToJSON(value?: DIDDocumentMetadata | null): a
         
         'deactivated': value.deactivated,
         'canonicalId': value.canonicalId,
+        'versionId': value.versionId,
+        'created': value.created,
+        'updated': value.updated,
     };
 }
 

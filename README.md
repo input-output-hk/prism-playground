@@ -42,7 +42,7 @@ http://127.0.0.1:8888/
 
 ### 2b. Access the Prism Agent Swagger API
 This is the default location to access the Prism Agent Swagger API:
-> NOTE: You need to pass in the `apikey` header with the value `kxr9i@6XgKBUxe%O`
+> ℹ️ Please note that to use the Swagger API on a browser, you must include the `apikey` header with the value `kxr9i@6XgKBUxe%O` in your requests. To accomplish this, you can use a browser extension that allows you to add custom headers. There are multiple extensions available for Chromium based browsers, so feel free to use whichever one you prefer.
 
 [Issuer Agent Swagger Interface](http://localhost:8080/docs/prism-agent/api/)  
 [Holder Agent Swagger Interface](http://localhost:8090/docs/prism-agent/api/)  

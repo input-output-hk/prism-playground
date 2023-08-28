@@ -44,6 +44,12 @@ export interface CreateManagedDidRequestDocumentTemplate {
      * @memberof CreateManagedDidRequestDocumentTemplate
      */
     services?: Array<Service>;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof CreateManagedDidRequestDocumentTemplate
+     */
+    contexts?: Array<string>;
 }
 
 /**
@@ -67,6 +73,7 @@ export function CreateManagedDidRequestDocumentTemplateFromJSONTyped(json: any, 
         
         'publicKeys': !exists(json, 'publicKeys') ? undefined : ((json['publicKeys'] as Array<any>).map(ManagedDIDKeyTemplateFromJSON)),
         'services': !exists(json, 'services') ? undefined : ((json['services'] as Array<any>).map(ServiceFromJSON)),
+        'contexts': !exists(json, 'contexts') ? undefined : json['contexts'],
     };
 }
 
@@ -81,6 +88,7 @@ export function CreateManagedDidRequestDocumentTemplateToJSON(value?: CreateMana
         
         'publicKeys': value.publicKeys === undefined ? undefined : ((value.publicKeys as Array<any>).map(ManagedDIDKeyTemplateToJSON)),
         'services': value.services === undefined ? undefined : ((value.services as Array<any>).map(ServiceToJSON)),
+        'contexts': value.contexts,
     };
 }
 

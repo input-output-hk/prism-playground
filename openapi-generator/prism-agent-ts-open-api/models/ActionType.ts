@@ -20,6 +20,7 @@
 export const ActionType = {
     AddKey: 'ADD_KEY',
     AddService: 'ADD_SERVICE',
+    PatchContext: 'PATCH_CONTEXT',
     RemoveKey: 'REMOVE_KEY',
     RemoveService: 'REMOVE_SERVICE',
     UpdateService: 'UPDATE_SERVICE'

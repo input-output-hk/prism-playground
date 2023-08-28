@@ -498,6 +498,14 @@ paths:
           format: int32
           type: integer
         style: form
+      - description: The thid of a DIDComm communication.
+        explode: true
+        in: query
+        name: thid
+        required: false
+        schema:
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -1484,10 +1492,24 @@ components:
       enum:
       - ADD_KEY
       - ADD_SERVICE
+      - PATCH_CONTEXT
       - REMOVE_KEY
       - REMOVE_SERVICE
       - UPDATE_SERVICE
       type: string
+    Arr:
+      properties:
+        elements:
+          items: {}
+          type: array
+      type: object
+    Bool:
+      properties:
+        value:
+          type: boolean
+      required:
+      - value
+      type: object
     Connection:
       example:
         createdAt: 2022-03-10T12:00:00Z
@@ -1500,6 +1522,7 @@ components:
           type: https://didcomm.org/out-of-band/2.0/invitation
         kind: Connection
         connectionId: 0527aea1-d131-3948-a34d-03af39aba8b4
+        thid: 0527aea1-d131-3948-a34d-03af39aba8b4
         self: https://atala-prism-products.io/connections/ABCD-1234
         label: Peter
         myDid: did:peer:12345
@@ -1510,6 +1533,12 @@ components:
           description: The unique identifier of the connection.
           example: 0527aea1-d131-3948-a34d-03af39aba8b4
           format: uuid
+          type: string
+        thid:
+          description: The unique identifier of the thread this connection record
+            belongs to. The value will identical on both sides of the connection (inviter
+            and invitee)
+          example: 0527aea1-d131-3948-a34d-03af39aba8b4
           type: string
         label:
           description: A human readable alias for the connection.
@@ -1576,6 +1605,7 @@ components:
       - role
       - self
       - state
+      - thid
       type: object
     ConnectionInvitation:
       description: The invitation for this connection
@@ -1618,42 +1648,13 @@ components:
         pageOf: ""
         next: /prism-agent/connections?offset=20&limit=10
         previous: /prism-agent/connections?offset=0&limit=10
-        contents:
-        - createdAt: 2022-03-10T12:00:00Z
-          theirDid: did:peer:67890
-          role: Inviter
-          invitation:
-            invitationUrl: https://my.domain.com/path?_oob=eyJAaWQiOiIzZmE4NWY2NC01NzE3LTQ1NjItYjNmYy0yYzk2M2Y2NmFmYTYiLCJAdHlwZSI6Imh0dHBzOi8vZGlkY29tbS5vcmcvbXktZmFtaWx5LzEuMC9teS1tZXNzYWdlLXR5cGUiLCJkaWQiOiJXZ1d4cXp0ck5vb0c5MlJYdnhTVFd2IiwiaW1hZ2VVcmwiOiJodHRwOi8vMTkyLjE2OC41Ni4xMDEvaW1nL2xvZ28uanBnIiwibGFiZWwiOiJCb2IiLCJyZWNpcGllbnRLZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQWpacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInJvdXRpbmdLZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQWpacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInNlcnZpY2VFbmRwb2ludCI6Imh0dHA6Ly8xOTIuMTY4LjU2LjEwMTo4MDIwIn0=
-            from: did:peer:1234457
-            id: 0527aea1-d131-3948-a34d-03af39aba8b4
-            type: https://didcomm.org/out-of-band/2.0/invitation
-          kind: Connection
-          connectionId: 0527aea1-d131-3948-a34d-03af39aba8b4
-          self: https://atala-prism-products.io/connections/ABCD-1234
-          label: Peter
-          myDid: did:peer:12345
-          state: InvitationGenerated
-          updatedAt: 2022-03-10T12:00:00Z
-        - createdAt: 2022-03-10T12:00:00Z
-          theirDid: did:peer:67890
-          role: Inviter
-          invitation:
-            invitationUrl: https://my.domain.com/path?_oob=eyJAaWQiOiIzZmE4NWY2NC01NzE3LTQ1NjItYjNmYy0yYzk2M2Y2NmFmYTYiLCJAdHlwZSI6Imh0dHBzOi8vZGlkY29tbS5vcmcvbXktZmFtaWx5LzEuMC9teS1tZXNzYWdlLXR5cGUiLCJkaWQiOiJXZ1d4cXp0ck5vb0c5MlJYdnhTVFd2IiwiaW1hZ2VVcmwiOiJodHRwOi8vMTkyLjE2OC41Ni4xMDEvaW1nL2xvZ28uanBnIiwibGFiZWwiOiJCb2IiLCJyZWNpcGllbnRLZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQWpacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInJvdXRpbmdLZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQWpacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInNlcnZpY2VFbmRwb2ludCI6Imh0dHA6Ly8xOTIuMTY4LjU2LjEwMTo4MDIwIn0=
-            from: did:peer:1234457
-            id: 0527aea1-d131-3948-a34d-03af39aba8b4
-            type: https://didcomm.org/out-of-band/2.0/invitation
-          kind: Connection
-          connectionId: 0527aea1-d131-3948-a34d-03af39aba8b4
-          self: https://atala-prism-products.io/connections/ABCD-1234
-          label: Peter
-          myDid: did:peer:12345
-          state: InvitationGenerated
-          updatedAt: 2022-03-10T12:00:00Z
+        contents: []
         kind: ConnectionsPage
         self: /prism-agent/connections?offset=10&limit=10
       properties:
         contents:
           description: ""
+          example: []
           items:
             $ref: '#/components/schemas/Connection'
           type: array
@@ -1757,15 +1758,14 @@ components:
             id: key-1
           services:
           - id: service-1
-            serviceEndpoint:
-            - serviceEndpoint
-            - serviceEndpoint
-            type: LinkedDomains
+            serviceEndpoint: https://example.com
+            type: Single(LinkedDomains)
           - id: service-1
-            serviceEndpoint:
-            - serviceEndpoint
-            - serviceEndpoint
-            type: LinkedDomains
+            serviceEndpoint: https://example.com
+            type: Single(LinkedDomains)
+          contexts:
+          - contexts
+          - contexts
       properties:
         documentTemplate:
           $ref: '#/components/schemas/CreateManagedDidRequestDocumentTemplate'
@@ -1781,15 +1781,14 @@ components:
           id: key-1
         services:
         - id: service-1
-          serviceEndpoint:
-          - serviceEndpoint
-          - serviceEndpoint
-          type: LinkedDomains
+          serviceEndpoint: https://example.com
+          type: Single(LinkedDomains)
         - id: service-1
-          serviceEndpoint:
-          - serviceEndpoint
-          - serviceEndpoint
-          type: LinkedDomains
+          serviceEndpoint: https://example.com
+          type: Single(LinkedDomains)
+        contexts:
+        - contexts
+        - contexts
       properties:
         publicKeys:
           items:
@@ -1798,6 +1797,10 @@ components:
         services:
           items:
             $ref: '#/components/schemas/Service'
+          type: array
+        contexts:
+          items:
+            type: string
           type: array
       type: object
     CredentialSchemaInput:
@@ -1835,8 +1838,9 @@ components:
         type: https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json
         version: 1.0.0
         tags:
-        - tags
-        - tags
+        - driving
+        - licence
+        - id
       properties:
         name:
           description: A human-readable name for the credential schema. A piece of
@@ -1896,6 +1900,10 @@ components:
         tags:
           description: Tokens that allow to lookup and filter the credential schema
             records.
+          example:
+          - driving
+          - licence
+          - id
           items:
             type: string
           type: array
@@ -1949,8 +1957,9 @@ components:
         type: https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json
         version: 1.0.0
         tags:
-        - tags
-        - tags
+        - driving
+        - licence
+        - id
         name: DrivingLicense
         guid: 0527aea1-d131-3948-a34d-03af39aba8b4
         self: /prism-agent/schema-registry/schemas/0527aea1-d131-3948-a34d-03af39aba8b4
@@ -1996,6 +2005,10 @@ components:
         tags:
           description: Tokens that allow to lookup and filter the credential schema
             records.
+          example:
+          - driving
+          - licence
+          - id
           items:
             type: string
           type: array
@@ -2079,113 +2092,14 @@ components:
         pageOf: /prism-agent/schema-registry/schemas
         next: /prism-agent/schema-registry/schemas?skip=20&limit=10
         previous: /prism-agent/schema-registry/schemas?skip=0&limit=10
-        contents:
-        - schema:
-            $id: https://example.com/driving-license-1.0
-            $schema: https://json-schema.org/draft/2020-12/schema
-            description: Driving License
-            type: object
-            properties:
-              emailAddress:
-                type: string
-                format: email
-              givenName:
-                type: string
-              familyName:
-                type: string
-              dateOfIssuance:
-                type: string
-                format: date-time
-              drivingLicenseID:
-                type: string
-              drivingClass:
-                type: integer
-            required:
-            - emailAddress
-            - familyName
-            - dateOfIssuance
-            - drivingLicenseID
-            - drivingClass
-            additionalProperties: false
-          authored: 2022-03-10T12:00:00Z
-          author: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff
-          kind: CredentialSchema
-          description: Simple credential schema for the driving licence verifiable
-            credential.
-          longId: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff/0527aea1-d131-3948-a34d-03af39aba8b4?version=1.0.0
-          type: https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json
-          version: 1.0.0
-          tags:
-          - tags
-          - tags
-          name: DrivingLicense
-          guid: 0527aea1-d131-3948-a34d-03af39aba8b4
-          self: /prism-agent/schema-registry/schemas/0527aea1-d131-3948-a34d-03af39aba8b4
-          id: 0527aea1-d131-3948-a34d-03af39aba8b5
-          proof:
-            type: Ed25519Signature2018
-            created: 2022-03-10T12:00:00Z
-            verificationMethod: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff#key-1
-            proofPurpose: assertionMethod
-            proofValue: FiPfjknHikKmZ...
-            jws: eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il0sImt0eSI6Ik...
-            domain: prims.atala.com
-        - schema:
-            $id: https://example.com/driving-license-1.0
-            $schema: https://json-schema.org/draft/2020-12/schema
-            description: Driving License
-            type: object
-            properties:
-              emailAddress:
-                type: string
-                format: email
-              givenName:
-                type: string
-              familyName:
-                type: string
-              dateOfIssuance:
-                type: string
-                format: date-time
-              drivingLicenseID:
-                type: string
-              drivingClass:
-                type: integer
-            required:
-            - emailAddress
-            - familyName
-            - dateOfIssuance
-            - drivingLicenseID
-            - drivingClass
-            additionalProperties: false
-          authored: 2022-03-10T12:00:00Z
-          author: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff
-          kind: CredentialSchema
-          description: Simple credential schema for the driving licence verifiable
-            credential.
-          longId: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff/0527aea1-d131-3948-a34d-03af39aba8b4?version=1.0.0
-          type: https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json
-          version: 1.0.0
-          tags:
-          - tags
-          - tags
-          name: DrivingLicense
-          guid: 0527aea1-d131-3948-a34d-03af39aba8b4
-          self: /prism-agent/schema-registry/schemas/0527aea1-d131-3948-a34d-03af39aba8b4
-          id: 0527aea1-d131-3948-a34d-03af39aba8b5
-          proof:
-            type: Ed25519Signature2018
-            created: 2022-03-10T12:00:00Z
-            verificationMethod: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff#key-1
-            proofPurpose: assertionMethod
-            proofValue: FiPfjknHikKmZ...
-            jws: eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il0sImt0eSI6Ik...
-            domain: prims.atala.com
+        contents: []
         kind: CredentialSchemaPage
         self: /prism-agent/schema-registry/schemas?skip=10&limit=10
       properties:
         contents:
           description: A sequence of CredentialSchemaResponse objects representing
             the list of credential schemas that the API response contains
+          example: []
           items:
             $ref: '#/components/schemas/CredentialSchemaResponse'
           type: array
@@ -2286,6 +2200,23 @@ components:
             If a DID is in long form and has been published, DID document metadata MUST contain a `canonicalId`` property with the short form DID as its value.
             If a DID in short form or has not been published, DID document metadata MUST NOT contain a `canonicalId` property.
           example: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff
+          type: string
+        versionId:
+          description: |2
+
+            DID document metadata MUST contain a versionId property with the hash of the AtalaOperation contained in the latest valid SignedAtalaOperation that created the DID or changed the DID's internal state.
+          example: 4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff
+          type: string
+        created:
+          description: The timestamp of the Cardano block that contained the first
+            valid SignedAtalaOperation with a CreateDIDOperation that created the
+            DID.
+          example: 2023-02-04T13:52:10Z
+          type: string
+        updated:
+          description: The timestamp of the Cardano block that contained the latest
+            valid SignedAtalaOperation that changed the DID's internal state.
+          example: 2023-02-04T13:52:10Z
           type: string
       type: object
     DIDOperationResponse:
@@ -2396,18 +2327,29 @@ components:
       type: object
     IssueCredentialRecord:
       example:
-        validityPeriod: 3600.0
         recordId: 80d612dc-0ded-4ac9-90b4-1b8eabb04545
-        createdAt: 2023-07-17T22:24:00.115325Z
+        validityPeriod: 3600.0
+        createdAt: 2023-08-01T17:08:48.883548Z
         issuingDID: did:prism:issuerofverifiablecredentials
         role: Issuer
         jwtCredential: jwtCredential
         claims: "(firstname,Alice)"
+        thid: 0527aea1-d131-3948-a34d-03af39aba8b4
         automaticIssuance: true
         subjectId: did:prism:subjectofverifiablecredentials
         updatedAt: 2000-01-23T04:56:07.000+00:00
         protocolState: OfferPending
       properties:
+        recordId:
+          description: The unique identifier of the issue credential record.
+          example: 80d612dc-0ded-4ac9-90b4-1b8eabb04545
+          type: string
+        thid:
+          description: The unique identifier of the thread this credential record
+            belongs to. The value will identical on both sides of the issue flow (issuer
+            and holder)
+          example: 0527aea1-d131-3948-a34d-03af39aba8b4
+          type: string
         subjectId:
           description: The identifier (e.g DID) of the subject to which the verifiable
             credential will be issued.
@@ -2430,13 +2372,9 @@ components:
             \ will be required for the VC to be issued."
           example: true
           type: boolean
-        recordId:
-          description: The unique identifier of the issue credential record.
-          example: 80d612dc-0ded-4ac9-90b4-1b8eabb04545
-          type: string
         createdAt:
           description: The date and time when the issue credential record was created.
-          example: 2023-07-17T22:24:00.115325Z
+          example: 2023-08-01T17:08:48.883548Z
           format: date-time
           type: string
         updatedAt:
@@ -2467,35 +2405,14 @@ components:
       - protocolState
       - recordId
       - role
+      - thid
       type: object
     IssueCredentialRecordPage:
       example:
         pageOf: /prism-agent/schema-registry/schemas
         next: /prism-agent/schema-registry/schemas?skip=20&limit=10
         previous: /prism-agent/schema-registry/schemas?skip=0&limit=10
-        contents:
-        - validityPeriod: 3600.0
-          recordId: 80d612dc-0ded-4ac9-90b4-1b8eabb04545
-          createdAt: 2023-07-17T22:24:00.115325Z
-          issuingDID: did:prism:issuerofverifiablecredentials
-          role: Issuer
-          jwtCredential: jwtCredential
-          claims: "(firstname,Alice)"
-          automaticIssuance: true
-          subjectId: did:prism:subjectofverifiablecredentials
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-          protocolState: OfferPending
-        - validityPeriod: 3600.0
-          recordId: 80d612dc-0ded-4ac9-90b4-1b8eabb04545
-          createdAt: 2023-07-17T22:24:00.115325Z
-          issuingDID: did:prism:issuerofverifiablecredentials
-          role: Issuer
-          jwtCredential: jwtCredential
-          claims: "(firstname,Alice)"
-          automaticIssuance: true
-          subjectId: did:prism:subjectofverifiablecredentials
-          updatedAt: 2000-01-23T04:56:07.000+00:00
-          protocolState: OfferPending
+        contents: []
         kind: /prism-agent/schema-registry/schemas?skip=10&limit=10
         self: /prism-agent/schema-registry/schemas?skip=10&limit=10
       properties:
@@ -2527,6 +2444,7 @@ components:
         contents:
           description: A sequence of IssueCredentialRecord objects representing the
             list of credential records that the API response contains
+          example: []
           items:
             $ref: '#/components/schemas/IssueCredentialRecord'
           type: array
@@ -2535,6 +2453,17 @@ components:
       - pageOf
       - self
       type: object
+    Json:
+      description: "The service endpoint. Can contain multiple possible values as\
+        \ described in the [Create DID operation]"
+      example: https://example.com
+      oneOf:
+      - $ref: '#/components/schemas/Arr'
+      - $ref: '#/components/schemas/Bool'
+      - $ref: '#/components/schemas/Null'
+      - $ref: '#/components/schemas/Num'
+      - $ref: '#/components/schemas/Obj'
+      - $ref: '#/components/schemas/Str'
     ManagedDID:
       example:
         longFormDid: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff:Cr4BCrsBElsKBmF1dGgtMRAEQk8KCXNlY3AyNTZrMRIg0opTuxu-zt6aRbT1tPniG4eu4CYsQPM3rrLzvzNiNgwaIIFTnyT2N4U7qCQ78qtWC3-p0el6Hvv8qxG5uuEw-WgMElwKB21hc3RlcjAQAUJPCglzZWNwMjU2azESIKhBU0eCOO6Vinz_8vhtFSAhYYqrkEXC8PHGxkuIUev8GiAydFHLXb7c22A1Uj_PR21NZp6BCDQqNq2xd244txRgsQ
@@ -2610,6 +2539,17 @@ components:
       - pageOf
       - self
       type: object
+    "Null":
+      type: object
+    Num:
+      properties:
+        value:
+          type: number
+      required:
+      - value
+      type: object
+    Obj:
+      type: object
     Options:
       description: "The options to use when creating the proof presentation request\
         \ (e.g., domain, challenge)."
@@ -2629,27 +2569,35 @@ components:
       - challenge
       - domain
       type: object
+    PatchContextAction:
+      example:
+        contexts:
+        - contexts
+        - contexts
+      properties:
+        contexts:
+          items:
+            type: string
+          type: array
+      type: object
     PresentationStatus:
       example:
         presentationId: 3c6d9fa5-d277-431e-a6cb-d3956e47e610
-        data:
-        - data
-        - data
-        proofs:
-        - schemaId: https://schema.org/Person
-          trustIssuers:
-          - trustIssuers
-          - trustIssuers
-        - schemaId: https://schema.org/Person
-          trustIssuers:
-          - trustIssuers
-          - trustIssuers
+        data: []
+        proofs: []
+        thid: 0527aea1-d131-3948-a34d-03af39aba8b4
         connectionId: bc528dc8-69f1-4c5a-a508-5f8019047900
         status: RequestPending
       properties:
         presentationId:
           description: The unique identifier of the presentation record.
           example: 3c6d9fa5-d277-431e-a6cb-d3956e47e610
+          type: string
+        thid:
+          description: The unique identifier of the thread this presentation record
+            belongs to. The value will identical on both sides of the presentation
+            flow (verifier and prover)
+          example: 0527aea1-d131-3948-a34d-03af39aba8b4
           type: string
         status:
           description: The current state of the proof presentation record.
@@ -2673,11 +2621,13 @@ components:
         proofs:
           description: "The type of proofs requested in the context of this proof\
             \ presentation request (e.g., VC schema, trusted issuers, etc.)"
+          example: []
           items:
             $ref: '#/components/schemas/ProofRequestAux'
           type: array
         data:
           description: The list of proofs presented by the prover to the verifier.
+          example: []
           items:
             type: string
           type: array
@@ -2689,48 +2639,20 @@ components:
       required:
       - presentationId
       - status
+      - thid
       type: object
     PresentationStatusPage:
       example:
         pageOf: "1"
         next: ""
         previous: ""
-        contents:
-        - presentationId: 3c6d9fa5-d277-431e-a6cb-d3956e47e610
-          data:
-          - data
-          - data
-          proofs:
-          - schemaId: https://schema.org/Person
-            trustIssuers:
-            - trustIssuers
-            - trustIssuers
-          - schemaId: https://schema.org/Person
-            trustIssuers:
-            - trustIssuers
-            - trustIssuers
-          connectionId: bc528dc8-69f1-4c5a-a508-5f8019047900
-          status: RequestPending
-        - presentationId: 3c6d9fa5-d277-431e-a6cb-d3956e47e610
-          data:
-          - data
-          - data
-          proofs:
-          - schemaId: https://schema.org/Person
-            trustIssuers:
-            - trustIssuers
-            - trustIssuers
-          - schemaId: https://schema.org/Person
-            trustIssuers:
-            - trustIssuers
-            - trustIssuers
-          connectionId: bc528dc8-69f1-4c5a-a508-5f8019047900
-          status: RequestPending
+        contents: []
         kind: Collection
         self: /present-proof/presentations
       properties:
         contents:
           description: A sequence of Presentation objects.
+          example: []
           items:
             $ref: '#/components/schemas/PresentationStatus'
           type: array
@@ -2819,11 +2741,6 @@ components:
       - verificationMethod
       type: object
     ProofRequestAux:
-      example:
-        schemaId: https://schema.org/Person
-        trustIssuers:
-        - trustIssuers
-        - trustIssuers
       properties:
         schemaId:
           description: The unique identifier of a schema the VC should comply with.
@@ -2832,6 +2749,10 @@ components:
         trustIssuers:
           description: One or more issuers that are trusted by the verifier emitting
             the proof presentation request.
+          example:
+          - did:web:atalaprism.io/users/testUser
+          - did.prism:123
+          - did:prism:...
           items:
             type: string
           type: array
@@ -2898,15 +2819,7 @@ components:
       type: object
     RequestPresentationInput:
       example:
-        proofs:
-        - schemaId: https://schema.org/Person
-          trustIssuers:
-          - trustIssuers
-          - trustIssuers
-        - schemaId: https://schema.org/Person
-          trustIssuers:
-          - trustIssuers
-          - trustIssuers
+        proofs: []
         options:
           domain: https://example-verifier.com
           challenge: 11c91493-01b3-4c4d-ac36-b336bab5bddf
@@ -2922,6 +2835,7 @@ components:
         proofs:
           description: "The type of proofs requested in the context of this proof\
             \ presentation request (e.g., VC schema, trusted issuers, etc.)"
+          example: []
           items:
             $ref: '#/components/schemas/ProofRequestAux'
           type: array
@@ -2943,10 +2857,8 @@ components:
       description: A service expressed in the DID document. https://www.w3.org/TR/did-core/#services
       example:
         id: service-1
-        serviceEndpoint:
-        - serviceEndpoint
-        - serviceEndpoint
-        type: LinkedDomains
+        serviceEndpoint: https://example.com
+        type: Single(LinkedDomains)
       properties:
         id:
           description: |-
@@ -2956,21 +2868,20 @@ components:
           example: service-1
           type: string
         type:
-          description: "Service type. Can contain multiple possible values as described\
-            \ in the [Create DID operation](https://github.com/input-output-hk/prism-did-method-spec/blob/main/w3c-spec/PRISM-method.md#create-did)\
-            \ under the construction section."
-          example: LinkedDomains
-          type: string
+          $ref: '#/components/schemas/Service_type'
         serviceEndpoint:
-          description: "The service endpoint. Can contain multiple possible values\
-            \ as described in the [Create DID operation]"
-          items:
-            type: string
-          type: array
+          $ref: '#/components/schemas/Json'
       required:
       - id
       - serviceEndpoint
       - type
+      type: object
+    Str:
+      properties:
+        value:
+          type: string
+      required:
+      - value
       type: object
     UpdateManagedDIDRequest:
       example:
@@ -2982,19 +2893,19 @@ components:
             id: id
           addService:
             id: service-1
-            serviceEndpoint:
-            - serviceEndpoint
-            - serviceEndpoint
-            type: LinkedDomains
+            serviceEndpoint: https://example.com
+            type: Single(LinkedDomains)
           updateService:
             id: service-1
-            serviceEndpoint:
-            - serviceEndpoint
-            - serviceEndpoint
+            serviceEndpoint: https://example.com
             type: LinkedDomains
           addKey:
             purpose: authentication
             id: key-1
+          patchContext:
+            contexts:
+            - contexts
+            - contexts
         - actionType: null
           removeKey:
             id: id
@@ -3002,19 +2913,19 @@ components:
             id: id
           addService:
             id: service-1
-            serviceEndpoint:
-            - serviceEndpoint
-            - serviceEndpoint
-            type: LinkedDomains
+            serviceEndpoint: https://example.com
+            type: Single(LinkedDomains)
           updateService:
             id: service-1
-            serviceEndpoint:
-            - serviceEndpoint
-            - serviceEndpoint
+            serviceEndpoint: https://example.com
             type: LinkedDomains
           addKey:
             purpose: authentication
             id: key-1
+          patchContext:
+            contexts:
+            - contexts
+            - contexts
       properties:
         actions:
           items:
@@ -3024,7 +2935,7 @@ components:
     UpdateManagedDIDRequestAction:
       description: |-
         A list of actions to perform on DID document.
-        The field `addKey`, `removeKey`, `addService`, `removeService`, `updateService` must corresponds to
+        The field `addKey`, `removeKey`, `addService`, `removeService`, `updateService`, `patchContext` must corresponds to
         the `actionType` specified. For example, `addKey` must be present when `actionType` is `ADD_KEY`.
       example:
         actionType: null
@@ -3034,19 +2945,19 @@ components:
           id: id
         addService:
           id: service-1
-          serviceEndpoint:
-          - serviceEndpoint
-          - serviceEndpoint
-          type: LinkedDomains
+          serviceEndpoint: https://example.com
+          type: Single(LinkedDomains)
         updateService:
           id: service-1
-          serviceEndpoint:
-          - serviceEndpoint
-          - serviceEndpoint
+          serviceEndpoint: https://example.com
           type: LinkedDomains
         addKey:
           purpose: authentication
           id: key-1
+        patchContext:
+          contexts:
+          - contexts
+          - contexts
       properties:
         actionType:
           $ref: '#/components/schemas/ActionType'
@@ -3060,6 +2971,8 @@ components:
           $ref: '#/components/schemas/RemoveEntryById'
         updateService:
           $ref: '#/components/schemas/UpdateManagedDIDServiceAction'
+        patchContext:
+          $ref: '#/components/schemas/PatchContextAction'
       required:
       - actionType
       type: object
@@ -3068,9 +2981,7 @@ components:
         both be empty.
       example:
         id: service-1
-        serviceEndpoint:
-        - serviceEndpoint
-        - serviceEndpoint
+        serviceEndpoint: https://example.com
         type: LinkedDomains
       properties:
         id:
@@ -3078,13 +2989,9 @@ components:
           example: service-1
           type: string
         type:
-          description: The type of the service
-          example: LinkedDomains
-          type: string
+          $ref: '#/components/schemas/UpdateManagedDIDServiceAction_type'
         serviceEndpoint:
-          items:
-            type: string
-          type: array
+          $ref: '#/components/schemas/Json'
       required:
       - id
       type: object
@@ -3273,3 +3180,21 @@ components:
       - pageOf
       - self
       type: object
+    Service_type:
+      description: "Service type. Can contain multiple possible values as described\
+        \ in the [Create DID operation](https://github.com/input-output-hk/prism-did-method-spec/blob/main/w3c-spec/PRISM-method.md#create-did)\
+        \ under the construction section."
+      example: Single(LinkedDomains)
+      oneOf:
+      - items:
+          type: string
+        type: array
+      - type: string
+    UpdateManagedDIDServiceAction_type:
+      description: The type of the service
+      example: LinkedDomains
+      oneOf:
+      - items:
+          type: string
+        type: array
+      - type: string

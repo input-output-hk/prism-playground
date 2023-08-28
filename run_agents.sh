@@ -17,6 +17,8 @@
 # You need to add `--add-host=host.docker.internal:host-gateway`
 # to the `docker run` command in order for it to work.
 # --------------------------------------------------------------------
+shopt -s extglob
+
 function getDockerHost() {
   (
     local dockerHostAddress
@@ -35,6 +37,5 @@ function getDockerHost() {
 }
 # ====================================================================
 export DOCKERHOST=$(getDockerHost)
-set -e
 
 ./agent/run.sh -n issuer -p 8080 -b;./agent/run.sh -n holder -p 8090 -b;./agent/run.sh -n verifier -p 9000 -b

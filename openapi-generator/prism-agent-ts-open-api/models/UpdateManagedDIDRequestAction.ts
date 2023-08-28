@@ -25,6 +25,12 @@ import {
     ManagedDIDKeyTemplateFromJSONTyped,
     ManagedDIDKeyTemplateToJSON,
 } from './ManagedDIDKeyTemplate';
+import type { PatchContextAction } from './PatchContextAction';
+import {
+    PatchContextActionFromJSON,
+    PatchContextActionFromJSONTyped,
+    PatchContextActionToJSON,
+} from './PatchContextAction';
 import type { RemoveEntryById } from './RemoveEntryById';
 import {
     RemoveEntryByIdFromJSON,
@@ -46,7 +52,7 @@ import {
 
 /**
  * A list of actions to perform on DID document.
- * The field `addKey`, `removeKey`, `addService`, `removeService`, `updateService` must corresponds to
+ * The field `addKey`, `removeKey`, `addService`, `removeService`, `updateService`, `patchContext` must corresponds to
  * the `actionType` specified. For example, `addKey` must be present when `actionType` is `ADD_KEY`.
  * @export
  * @interface UpdateManagedDIDRequestAction
@@ -88,6 +94,12 @@ export interface UpdateManagedDIDRequestAction {
      * @memberof UpdateManagedDIDRequestAction
      */
     updateService?: UpdateManagedDIDServiceAction;
+    /**
+     * 
+     * @type {PatchContextAction}
+     * @memberof UpdateManagedDIDRequestAction
+     */
+    patchContext?: PatchContextAction;
 }
 
 /**
@@ -116,6 +128,7 @@ export function UpdateManagedDIDRequestActionFromJSONTyped(json: any, ignoreDisc
         'addService': !exists(json, 'addService') ? undefined : ServiceFromJSON(json['addService']),
         'removeService': !exists(json, 'removeService') ? undefined : RemoveEntryByIdFromJSON(json['removeService']),
         'updateService': !exists(json, 'updateService') ? undefined : UpdateManagedDIDServiceActionFromJSON(json['updateService']),
+        'patchContext': !exists(json, 'patchContext') ? undefined : PatchContextActionFromJSON(json['patchContext']),
     };
 }
 
@@ -134,6 +147,7 @@ export function UpdateManagedDIDRequestActionToJSON(value?: UpdateManagedDIDRequ
         'addService': ServiceToJSON(value.addService),
         'removeService': RemoveEntryByIdToJSON(value.removeService),
         'updateService': UpdateManagedDIDServiceActionToJSON(value.updateService),
+        'patchContext': PatchContextActionToJSON(value.patchContext),
     };
 }
 

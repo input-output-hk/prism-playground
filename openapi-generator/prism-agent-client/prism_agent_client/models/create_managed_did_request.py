@@ -14,15 +14,16 @@ class CreateManagedDidRequest:
     """
     Example:
         {'documentTemplate': {'publicKeys': [{'purpose': 'authentication', 'id': 'key-1'}, {'purpose': 'authentication',
-            'id': 'key-1'}], 'services': [{'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'],
-            'type': 'LinkedDomains'}, {'id': 'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}]}}
+            'id': 'key-1'}], 'services': [{'id': 'service-1', 'serviceEndpoint': 'https://example.com', 'type':
+            'Single(LinkedDomains)'}, {'id': 'service-1', 'serviceEndpoint': 'https://example.com', 'type':
+            'Single(LinkedDomains)'}], 'contexts': ['contexts', 'contexts']}}
 
     Attributes:
         document_template (CreateManagedDidRequestDocumentTemplate):  Example: {'publicKeys': [{'purpose':
             'authentication', 'id': 'key-1'}, {'purpose': 'authentication', 'id': 'key-1'}], 'services': [{'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, {'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}]}.
+            'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'Single(LinkedDomains)'}, {'id': 'service-1',
+            'serviceEndpoint': 'https://example.com', 'type': 'Single(LinkedDomains)'}], 'contexts': ['contexts',
+            'contexts']}.
     """
 
     document_template: "CreateManagedDidRequestDocumentTemplate"

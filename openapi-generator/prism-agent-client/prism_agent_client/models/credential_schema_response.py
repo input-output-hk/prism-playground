@@ -28,7 +28,7 @@ class CredentialSchemaResponse:
             'description': 'Simple credential schema for the driving licence verifiable credential.', 'longId': 'did:prism:4
             a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff/0527aea1-d131-3948-a34d-
             03af39aba8b4?version=1.0.0', 'type': 'https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json',
-            'version': '1.0.0', 'tags': ['tags', 'tags'], 'name': 'DrivingLicense', 'guid':
+            'version': '1.0.0', 'tags': ['driving', 'licence', 'id'], 'name': 'DrivingLicense', 'guid':
             '0527aea1-d131-3948-a34d-03af39aba8b4', 'self': '/prism-agent/schema-
             registry/schemas/0527aea1-d131-3948-a34d-03af39aba8b4', 'id': '0527aea1-d131-3948-a34d-03af39aba8b5', 'proof':
             {'type': 'Ed25519Signature2018', 'created': datetime.datetime(2022, 3, 10, 12, 0, tzinfo=datetime.timezone.utc),
@@ -67,7 +67,8 @@ class CredentialSchemaResponse:
         long_id (Union[Unset, str]): Resource id of the credential schema. Contains the `author`'s DID, `id` and
             `version` fields. Example: did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff/0527aea1-
             d131-3948-a34d-03af39aba8b4?version=1.0.0.
-        tags (Union[Unset, List[str]]): Tokens that allow to lookup and filter the credential schema records.
+        tags (Union[Unset, List[str]]): Tokens that allow to lookup and filter the credential schema records. Example:
+            ['driving', 'licence', 'id'].
         proof (Union[Unset, Proof]): A digital signature over the Credential Schema for the sake of asserting
             authorship. A piece of Metadata. Example: {'type': 'Ed25519Signature2018', 'created': datetime.datetime(2022, 3,
             10, 12, 0, tzinfo=datetime.timezone.utc), 'verificationMethod':

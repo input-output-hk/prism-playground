@@ -33,6 +33,12 @@ export interface Connection {
      */
     connectionId: string;
     /**
+     * The unique identifier of the thread this connection record belongs to. The value will identical on both sides of the connection (inviter and invitee)
+     * @type {string}
+     * @memberof Connection
+     */
+    thid: string;
+    /**
      * A human readable alias for the connection.
      * @type {string}
      * @memberof Connection
@@ -129,6 +135,7 @@ export type ConnectionStateEnum = typeof ConnectionStateEnum[keyof typeof Connec
 export function instanceOfConnection(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "connectionId" in value;
+    isInstance = isInstance && "thid" in value;
     isInstance = isInstance && "role" in value;
     isInstance = isInstance && "state" in value;
     isInstance = isInstance && "invitation" in value;
@@ -150,6 +157,7 @@ export function ConnectionFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     return {
         
         'connectionId': json['connectionId'],
+        'thid': json['thid'],
         'label': !exists(json, 'label') ? undefined : json['label'],
         'myDid': !exists(json, 'myDid') ? undefined : json['myDid'],
         'theirDid': !exists(json, 'theirDid') ? undefined : json['theirDid'],
@@ -173,6 +181,7 @@ export function ConnectionToJSON(value?: Connection | null): any {
     return {
         
         'connectionId': value.connectionId,
+        'thid': value.thid,
         'label': value.label,
         'myDid': value.myDid,
         'theirDid': value.theirDid,

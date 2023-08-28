@@ -3,6 +3,8 @@
 from .accept_connection_invitation_request import AcceptConnectionInvitationRequest
 from .accept_credential_offer_request import AcceptCredentialOfferRequest
 from .action_type import ActionType
+from .arr import Arr
+from .bool_ import Bool
 from .connection import Connection
 from .connection_invitation import ConnectionInvitation
 from .connection_role import ConnectionRole
@@ -29,7 +31,11 @@ from .issue_credential_record_page import IssueCredentialRecordPage
 from .managed_did import ManagedDID
 from .managed_did_key_template import ManagedDIDKeyTemplate
 from .managed_did_page import ManagedDIDPage
+from .null import Null
+from .num import Num
+from .obj import Obj
 from .options import Options
+from .patch_context_action import PatchContextAction
 from .presentation_status import PresentationStatus
 from .presentation_status_page import PresentationStatusPage
 from .presentation_status_status import PresentationStatusStatus
@@ -43,6 +49,7 @@ from .request_presentation_action_action import RequestPresentationActionAction
 from .request_presentation_input import RequestPresentationInput
 from .request_presentation_output import RequestPresentationOutput
 from .service import Service
+from .str_ import Str
 from .update_managed_did_request import UpdateManagedDIDRequest
 from .update_managed_did_request_action import UpdateManagedDIDRequestAction
 from .update_managed_did_service_action import UpdateManagedDIDServiceAction
@@ -56,6 +63,8 @@ __all__ = (
     "AcceptConnectionInvitationRequest",
     "AcceptCredentialOfferRequest",
     "ActionType",
+    "Arr",
+    "Bool",
     "Connection",
     "ConnectionInvitation",
     "ConnectionRole",
@@ -82,7 +91,11 @@ __all__ = (
     "ManagedDID",
     "ManagedDIDKeyTemplate",
     "ManagedDIDPage",
+    "Null",
+    "Num",
+    "Obj",
     "Options",
+    "PatchContextAction",
     "PresentationStatus",
     "PresentationStatusPage",
     "PresentationStatusStatus",
@@ -96,6 +109,7 @@ __all__ = (
     "RequestPresentationInput",
     "RequestPresentationOutput",
     "Service",
+    "Str",
     "UpdateManagedDIDRequest",
     "UpdateManagedDIDRequestAction",
     "UpdateManagedDIDServiceAction",

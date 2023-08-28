@@ -16,10 +16,8 @@ T = TypeVar("T", bound="RequestPresentationInput")
 class RequestPresentationInput:
     """
     Example:
-        {'proofs': [{'schemaId': 'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']},
-            {'schemaId': 'https://schema.org/Person', 'trustIssuers': ['trustIssuers', 'trustIssuers']}], 'options':
-            {'domain': 'https://example-verifier.com', 'challenge': '11c91493-01b3-4c4d-ac36-b336bab5bddf'}, 'connectionId':
-            'bc528dc8-69f1-4c5a-a508-5f8019047900'}
+        {'proofs': [], 'options': {'domain': 'https://example-verifier.com', 'challenge':
+            '11c91493-01b3-4c4d-ac36-b336bab5bddf'}, 'connectionId': 'bc528dc8-69f1-4c5a-a508-5f8019047900'}
 
     Attributes:
         connection_id (str): The unique identifier of an established connection between the verifier and the prover.

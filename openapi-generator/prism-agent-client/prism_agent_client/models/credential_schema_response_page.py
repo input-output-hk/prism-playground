@@ -17,43 +17,7 @@ class CredentialSchemaResponsePage:
     Example:
         {'pageOf': '/prism-agent/schema-registry/schemas', 'next': '/prism-agent/schema-
             registry/schemas?skip=20&limit=10', 'previous': '/prism-agent/schema-registry/schemas?skip=0&limit=10',
-            'contents': [{'schema': {'$id': 'https://example.com/driving-license-1.0', '$schema': 'https://json-
-            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object', 'properties':
-            {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName': {'type': 'string'}, 'familyName': {'type':
-            'string'}, 'dateOfIssuance': {'type': 'string', 'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'},
-            'drivingClass': {'type': 'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
-            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'authored': datetime.datetime(2022, 3, 10,
-            12, 0, tzinfo=datetime.timezone.utc), 'author':
-            'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'kind': 'CredentialSchema',
-            'description': 'Simple credential schema for the driving licence verifiable credential.', 'longId': 'did:prism:4
-            a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff/0527aea1-d131-3948-a34d-
-            03af39aba8b4?version=1.0.0', 'type': 'https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json',
-            'version': '1.0.0', 'tags': ['tags', 'tags'], 'name': 'DrivingLicense', 'guid':
-            '0527aea1-d131-3948-a34d-03af39aba8b4', 'self': '/prism-agent/schema-
-            registry/schemas/0527aea1-d131-3948-a34d-03af39aba8b4', 'id': '0527aea1-d131-3948-a34d-03af39aba8b5', 'proof':
-            {'type': 'Ed25519Signature2018', 'created': datetime.datetime(2022, 3, 10, 12, 0, tzinfo=datetime.timezone.utc),
-            'verificationMethod': 'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff#key-1',
-            'proofPurpose': 'assertionMethod', 'proofValue': 'FiPfjknHikKmZ...', 'jws':
-            'eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il0sImt0eSI6Ik...', 'domain': 'prims.atala.com'}},
-            {'schema': {'$id': 'https://example.com/driving-license-1.0', '$schema': 'https://json-
-            schema.org/draft/2020-12/schema', 'description': 'Driving License', 'type': 'object', 'properties':
-            {'emailAddress': {'type': 'string', 'format': 'email'}, 'givenName': {'type': 'string'}, 'familyName': {'type':
-            'string'}, 'dateOfIssuance': {'type': 'string', 'format': 'date-time'}, 'drivingLicenseID': {'type': 'string'},
-            'drivingClass': {'type': 'integer'}}, 'required': ['emailAddress', 'familyName', 'dateOfIssuance',
-            'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'authored': datetime.datetime(2022, 3, 10,
-            12, 0, tzinfo=datetime.timezone.utc), 'author':
-            'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'kind': 'CredentialSchema',
-            'description': 'Simple credential schema for the driving licence verifiable credential.', 'longId': 'did:prism:4
-            a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff/0527aea1-d131-3948-a34d-
-            03af39aba8b4?version=1.0.0', 'type': 'https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json',
-            'version': '1.0.0', 'tags': ['tags', 'tags'], 'name': 'DrivingLicense', 'guid':
-            '0527aea1-d131-3948-a34d-03af39aba8b4', 'self': '/prism-agent/schema-
-            registry/schemas/0527aea1-d131-3948-a34d-03af39aba8b4', 'id': '0527aea1-d131-3948-a34d-03af39aba8b5', 'proof':
-            {'type': 'Ed25519Signature2018', 'created': datetime.datetime(2022, 3, 10, 12, 0, tzinfo=datetime.timezone.utc),
-            'verificationMethod': 'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff#key-1',
-            'proofPurpose': 'assertionMethod', 'proofValue': 'FiPfjknHikKmZ...', 'jws':
-            'eyJhbGciOiJFZERTQSIsImI2NCI6ZmFsc2UsImNyaXQiOlsiYjY0Il0sImt0eSI6Ik...', 'domain': 'prims.atala.com'}}], 'kind':
-            'CredentialSchemaPage', 'self': '/prism-agent/schema-registry/schemas?skip=10&limit=10'}
+            'contents': [], 'kind': 'CredentialSchemaPage', 'self': '/prism-agent/schema-registry/schemas?skip=10&limit=10'}
 
     Attributes:
         kind (str): A string field indicating the type of the API response. In this case, it will always be set to

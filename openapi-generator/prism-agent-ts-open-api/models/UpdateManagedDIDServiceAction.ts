@@ -13,6 +13,19 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { Json } from './Json';
+import {
+    JsonFromJSON,
+    JsonFromJSONTyped,
+    JsonToJSON,
+} from './Json';
+import type { UpdateManagedDIDServiceActionType } from './UpdateManagedDIDServiceActionType';
+import {
+    UpdateManagedDIDServiceActionTypeFromJSON,
+    UpdateManagedDIDServiceActionTypeFromJSONTyped,
+    UpdateManagedDIDServiceActionTypeToJSON,
+} from './UpdateManagedDIDServiceActionType';
+
 /**
  * A patch to existing Service. 'type' and 'serviceEndpoint' cannot both be empty.
  * @export
@@ -26,17 +39,17 @@ export interface UpdateManagedDIDServiceAction {
      */
     id: string;
     /**
-     * The type of the service
-     * @type {string}
+     * 
+     * @type {UpdateManagedDIDServiceActionType}
      * @memberof UpdateManagedDIDServiceAction
      */
-    type?: string;
+    type?: UpdateManagedDIDServiceActionType;
     /**
      * 
-     * @type {Array<string>}
+     * @type {Json}
      * @memberof UpdateManagedDIDServiceAction
      */
-    serviceEndpoint?: Array<string>;
+    serviceEndpoint?: Json;
 }
 
 /**
@@ -60,8 +73,8 @@ export function UpdateManagedDIDServiceActionFromJSONTyped(json: any, ignoreDisc
     return {
         
         'id': json['id'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
-        'serviceEndpoint': !exists(json, 'serviceEndpoint') ? undefined : json['serviceEndpoint'],
+        'type': !exists(json, 'type') ? undefined : UpdateManagedDIDServiceActionTypeFromJSON(json['type']),
+        'serviceEndpoint': !exists(json, 'serviceEndpoint') ? undefined : JsonFromJSON(json['serviceEndpoint']),
     };
 }
 
@@ -75,8 +88,8 @@ export function UpdateManagedDIDServiceActionToJSON(value?: UpdateManagedDIDServ
     return {
         
         'id': value.id,
-        'type': value.type,
-        'serviceEndpoint': value.serviceEndpoint,
+        'type': UpdateManagedDIDServiceActionTypeToJSON(value.type),
+        'serviceEndpoint': JsonToJSON(value.serviceEndpoint),
     };
 }
 

@@ -19,8 +19,8 @@ class CredentialSchemaInput:
             'drivingLicenseID', 'drivingClass'], 'additionalProperties': False}, 'author':
             'did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff', 'name': 'DrivingLicense',
             'description': 'Simple credential schema for the driving licence verifiable credential.', 'type':
-            'https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['tags',
-            'tags']}
+            'https://w3c-ccg.github.io/vc-json-schemas/schema/2.0/schema.json', 'version': '1.0.0', 'tags': ['driving',
+            'licence', 'id']}
 
     Attributes:
         name (str): A human-readable name for the credential schema. A piece of Metadata. Example: DrivingLicense.
@@ -39,7 +39,8 @@ class CredentialSchemaInput:
             did:prism:4a5b5cf0a513e83b598bbea25cd6196746747f361a73ef77068268bc9bd732ff.
         description (Union[Unset, str]): A human-readable description of the credential schema Example: Simple
             credential schema for the driving licence verifiable credential..
-        tags (Union[Unset, List[str]]): Tokens that allow to lookup and filter the credential schema records.
+        tags (Union[Unset, List[str]]): Tokens that allow to lookup and filter the credential schema records. Example:
+            ['driving', 'licence', 'id'].
     """
 
     name: str

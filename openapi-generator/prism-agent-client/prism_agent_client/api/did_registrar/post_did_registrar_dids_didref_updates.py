@@ -97,14 +97,15 @@ def sync_detailed(
         did_ref (str):
         json_body (UpdateManagedDIDRequest):  Example: {'actions': [{'actionType': None,
             'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}, 'updateService': {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'addKey': {'purpose':
-            'authentication', 'id': 'key-1'}}, {'actionType': None, 'removeKey': {'id': 'id'},
+            'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'Single(LinkedDomains)'},
+            'updateService': {'id': 'service-1', 'serviceEndpoint': 'https://example.com', 'type':
+            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}, 'patchContext':
+            {'contexts': ['contexts', 'contexts']}}, {'actionType': None, 'removeKey': {'id': 'id'},
             'removeService': {'id': 'id'}, 'addService': {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'updateService': {'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}}]}.
+            'https://example.com', 'type': 'Single(LinkedDomains)'}, 'updateService': {'id':
+            'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'LinkedDomains'}, 'addKey':
+            {'purpose': 'authentication', 'id': 'key-1'}, 'patchContext': {'contexts': ['contexts',
+            'contexts']}}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -146,14 +147,15 @@ def sync(
         did_ref (str):
         json_body (UpdateManagedDIDRequest):  Example: {'actions': [{'actionType': None,
             'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}, 'updateService': {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'addKey': {'purpose':
-            'authentication', 'id': 'key-1'}}, {'actionType': None, 'removeKey': {'id': 'id'},
+            'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'Single(LinkedDomains)'},
+            'updateService': {'id': 'service-1', 'serviceEndpoint': 'https://example.com', 'type':
+            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}, 'patchContext':
+            {'contexts': ['contexts', 'contexts']}}, {'actionType': None, 'removeKey': {'id': 'id'},
             'removeService': {'id': 'id'}, 'addService': {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'updateService': {'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}}]}.
+            'https://example.com', 'type': 'Single(LinkedDomains)'}, 'updateService': {'id':
+            'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'LinkedDomains'}, 'addKey':
+            {'purpose': 'authentication', 'id': 'key-1'}, 'patchContext': {'contexts': ['contexts',
+            'contexts']}}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -188,14 +190,15 @@ async def asyncio_detailed(
         did_ref (str):
         json_body (UpdateManagedDIDRequest):  Example: {'actions': [{'actionType': None,
             'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}, 'updateService': {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'addKey': {'purpose':
-            'authentication', 'id': 'key-1'}}, {'actionType': None, 'removeKey': {'id': 'id'},
+            'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'Single(LinkedDomains)'},
+            'updateService': {'id': 'service-1', 'serviceEndpoint': 'https://example.com', 'type':
+            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}, 'patchContext':
+            {'contexts': ['contexts', 'contexts']}}, {'actionType': None, 'removeKey': {'id': 'id'},
             'removeService': {'id': 'id'}, 'addService': {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'updateService': {'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}}]}.
+            'https://example.com', 'type': 'Single(LinkedDomains)'}, 'updateService': {'id':
+            'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'LinkedDomains'}, 'addKey':
+            {'purpose': 'authentication', 'id': 'key-1'}, 'patchContext': {'contexts': ['contexts',
+            'contexts']}}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.
@@ -235,14 +238,15 @@ async def asyncio(
         did_ref (str):
         json_body (UpdateManagedDIDRequest):  Example: {'actions': [{'actionType': None,
             'removeKey': {'id': 'id'}, 'removeService': {'id': 'id'}, 'addService': {'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}, 'updateService': {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'addKey': {'purpose':
-            'authentication', 'id': 'key-1'}}, {'actionType': None, 'removeKey': {'id': 'id'},
+            'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'Single(LinkedDomains)'},
+            'updateService': {'id': 'service-1', 'serviceEndpoint': 'https://example.com', 'type':
+            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}, 'patchContext':
+            {'contexts': ['contexts', 'contexts']}}, {'actionType': None, 'removeKey': {'id': 'id'},
             'removeService': {'id': 'id'}, 'addService': {'id': 'service-1', 'serviceEndpoint':
-            ['serviceEndpoint', 'serviceEndpoint'], 'type': 'LinkedDomains'}, 'updateService': {'id':
-            'service-1', 'serviceEndpoint': ['serviceEndpoint', 'serviceEndpoint'], 'type':
-            'LinkedDomains'}, 'addKey': {'purpose': 'authentication', 'id': 'key-1'}}]}.
+            'https://example.com', 'type': 'Single(LinkedDomains)'}, 'updateService': {'id':
+            'service-1', 'serviceEndpoint': 'https://example.com', 'type': 'LinkedDomains'}, 'addKey':
+            {'purpose': 'authentication', 'id': 'key-1'}, 'patchContext': {'contexts': ['contexts',
+            'contexts']}}]}.
 
     Raises:
         errors.UnexpectedStatus: If the server returns an undocumented status code and Client.raise_on_unexpected_status is True.

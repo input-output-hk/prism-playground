@@ -27,12 +27,14 @@ class Connection:
             ZXlzIjpbIkgzQzJBVnZMTXY2Z21NTmFtM3VWQWpacGZrY0pDd0R3blpuNnozd1htcVBWIl0sInNlcnZpY2VFbmRwb2ludCI6Imh0dHA6Ly8xOTIu
             MTY4LjU2LjEwMTo4MDIwIn0=', 'from': 'did:peer:1234457', 'id': '0527aea1-d131-3948-a34d-03af39aba8b4', 'type':
             'https://didcomm.org/out-of-band/2.0/invitation'}, 'kind': 'Connection', 'connectionId':
-            '0527aea1-d131-3948-a34d-03af39aba8b4', 'self': 'https://atala-prism-products.io/connections/ABCD-1234',
-            'label': 'Peter', 'myDid': 'did:peer:12345', 'state': 'InvitationGenerated', 'updatedAt':
-            datetime.datetime(2022, 3, 10, 12, 0, tzinfo=datetime.timezone.utc)}
+            '0527aea1-d131-3948-a34d-03af39aba8b4', 'thid': '0527aea1-d131-3948-a34d-03af39aba8b4', 'self': 'https://atala-
+            prism-products.io/connections/ABCD-1234', 'label': 'Peter', 'myDid': 'did:peer:12345', 'state':
+            'InvitationGenerated', 'updatedAt': datetime.datetime(2022, 3, 10, 12, 0, tzinfo=datetime.timezone.utc)}
 
     Attributes:
         connection_id (str): The unique identifier of the connection. Example: 0527aea1-d131-3948-a34d-03af39aba8b4.
+        thid (str): The unique identifier of the thread this connection record belongs to. The value will identical on
+            both sides of the connection (inviter and invitee) Example: 0527aea1-d131-3948-a34d-03af39aba8b4.
         role (ConnectionRole): The role played by the Prism agent in the connection flow. Example: Inviter.
         state (ConnectionState): The current state of the connection protocol execution. Example: InvitationGenerated.
         invitation (ConnectionInvitation): The invitation for this connection Example: {'invitationUrl': 'https://my.dom
@@ -57,6 +59,7 @@ class Connection:
     """
 
     connection_id: str
+    thid: str
     role: ConnectionRole
     state: ConnectionState
     invitation: "ConnectionInvitation"
@@ -71,6 +74,7 @@ class Connection:
 
     def to_dict(self) -> Dict[str, Any]:
         connection_id = self.connection_id
+        thid = self.thid
         role = self.role.value
 
         state = self.state.value
@@ -93,6 +97,7 @@ class Connection:
         field_dict.update(
             {
                 "connectionId": connection_id,
+                "thid": thid,
                 "role": role,
                 "state": state,
                 "invitation": invitation,
@@ -118,6 +123,8 @@ class Connection:
 
         d = src_dict.copy()
         connection_id = d.pop("connectionId")
+
+        thid = d.pop("thid")
 
         role = ConnectionRole(d.pop("role"))
 
@@ -146,6 +153,7 @@ class Connection:
 
         connection = cls(
             connection_id=connection_id,
+            thid=thid,
             role=role,
             state=state,
             invitation=invitation,
